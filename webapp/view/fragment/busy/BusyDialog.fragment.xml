@@ -1,0 +1,9 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<BusyDialog
+		busyIndicatorDelay="0"
+		
+		showCancelButton="false"/>
+
+</core:FragmentDefinition>  

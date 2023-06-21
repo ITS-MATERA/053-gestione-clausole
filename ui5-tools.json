@@ -1,0 +1,19 @@
+{
+  "deployer": {
+    "type": "Gateway",
+    "options": {
+      "conn": {
+        "server": "http://l2vs2slass01.mef.gov.it:8000",
+        "client": "100"
+      },
+      "ui5": {
+        "language": "EN",
+        "package": "Z_ACN_S4_FI_E053",
+        "bspcontainer": "ZATTCLA_E053",
+        "bspcontainer_text": "Funzionalità per imputazione e attivazione clausole",
+        "calc_appindex": true,
+        "transportno": "S2SK914921"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<c:FragmentDefinition
+	xmlns:c="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+>
+	<VBox class="sapUiSmallMargin ">
+			<items>
+				<l:Grid  defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+					<Table
+						id="tableAssign"
+						width="auto"
+						class="sapUiResponsiveMargin"
+							items="{
+							path: 'ProvisionItems>/'
+						}"
+						selectionChange="onSelectedAssign"
+						noDataText="{i18n>tableNoDataText}"
+						busyIndicatorDelay="{provisionView>/delay}"
+						growing="true"
+						growingScrollToLoad="true"
+						mode="SingleSelectLeft"
+						>
+						<headerToolbar>
+							<Toolbar >
+								<Label  class="textBig" design="Bold" text="{provisionView>/titleTable}" />
+								<ToolbarSpacer />
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<!--COLONNE IMPUTAZIONE-->
+
+							<Column minScreenWidth="Tablet" demandPopin="true">
+									<header><Text  text="{i18n>tableNameColumnDetailsFipex}" /></header>
+							</Column>
+							
+							<Column    minScreenWidth="Tablet" demandPopin="true">
+									<header><Text  text="{i18n>tableNameColumnDetailsFistl}" /></header>
+							</Column>
+							
+							<Column    minScreenWidth="Tablet" demandPopin="true">
+									<header><Text  text="{i18n>tableNameColumnDetailsGeber}" /></header>
+							</Column>
+
+
+						</columns>
+						<items>
+							<ColumnListItem  >
+								<cells>
+									<!--DATI IMPUTAZIONE-->
+									<Text  text="{ProvisionItems>FipexEng}" />
+									<Text text="{ProvisionItems>FistlEng}" />
+									<Text  text="{ProvisionItems>ZgeberEng}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</l:Grid>
+			</items> 
+		</VBox>
+		
+</c:FragmentDefinition>

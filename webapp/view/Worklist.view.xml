@@ -1,0 +1,22 @@
+<mvc:View
+	height="100%"
+	controllerName="gestioneattivazioneclausole.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" 
+	xmlns:semantic="sap.m.semantic">
+
+	<semantic:FullscreenPage
+		id="page"
+		navButtonPress="onNavBack"
+		showNavButton="false">
+		<semantic:content>
+
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.HeaderToolBar" type="XML"/>
+
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.TableProvisions" type="XML"/>
+
+		</semantic:content>
+	</semantic:FullscreenPage>
+
+</mvc:View>

@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="gestioneattivazioneclausole.controller.NotAuth"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+      <MessagePage
+        title="{i18n>notAuthTitle}"
+        text="{view>/mex}"
+        icon="sap-icon://alert"
+        id="page"
+        description="">
+    </MessagePage>
+
+</mvc:View>

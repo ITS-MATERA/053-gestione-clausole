@@ -1,0 +1,80 @@
+.textBig {
+  font-size: large;
+  color: black;
+}
+.colorBlue {
+  background-color: rgba(235, 249, 255, 255);
+}
+.width100 {
+  width: 100%;
+  color: red !important;
+}
+
+.textBlueBackWhite {
+  color: blue !important;
+  background-color: white;
+}
+.textBlueBackGray {
+  color: blue !important;
+  background-color: #f2f2f2;
+}
+.bgGray {
+  background-color: #f2f2f2 !important;
+}
+.visibleXL {
+  display: block !important;
+}
+
+.textAlignCenter {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.textBlack > span {
+  color: black !important;
+}
+
+@media all and (max-width: 600px) {
+  .textBig {
+    font-size: medium;
+  }
+}
+@media all and (max-width: 1440px) {
+  .visibleXL {
+    display: none !important;
+  }
+}
+
+div.fill-one > span > span {
+  color: #70a9ff;
+}
+
+div.fill-two > span > span {
+  color: #74c69d;
+}
+
+div.fill-three > span > span {
+  color: #adb5bd;
+}
+
+.headerColor > table > thead > tr > th:nth-child(-n + 4) {
+  background-color: #c2daff !important;
+}
+.headerColor > table > thead > tr > th:nth-child(n + 5):nth-child(-n + 8) {
+  background-color: #b7e4c7 !important;
+}
+
+.headerColor > table > thead > tr > th:nth-child(n + 9):nth-child(-n + 12) {
+  background-color: #dee2e6 !important;
+}
+
+.headerColor > table > tbody > tr > td:nth-child(-n + 4) {
+  background-color: #ebf3ff !important;
+}
+.headerColor > table > tbody > tr > td:nth-child(n + 5):nth-child(-n + 8) {
+  background-color: #f0fffb !important;
+}
+
+.headerColor > table > tbody > tr > td:nth-child(n + 9):nth-child(-n + 12) {
+  background-color: #f8f9fa !important;
+}

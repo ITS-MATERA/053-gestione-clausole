@@ -1,0 +1,210 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "id": "gestioneattivazioneclausole",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:worklist",
+            "version": "1.9.1",
+            "toolsId": "8e650f1a-da00-4a86-a49f-9b972ee4bf17"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZS4_FUNZ_IMP_ATT_CLA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSS4_CA_CONI_VISIBILITA_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSS4_CA_CONI_VISIBILITA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZSS4_CA_CONI_VISIBILITA_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ESH_SEARCH_SRV": {
+                "uri": "/sap/opu/odata/sap/ESH_SEARCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/ESH_SEARCH_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.71.50",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "gestioneattivazioneclausole.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "ZSS4_CA_CONI_VISIBILITA_SRV": {
+                "dataSource": "ZSS4_CA_CONI_VISIBILITA_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "ESH_SEARCH_SRV": {
+                "dataSource": "ESH_SEARCH_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css",
+                    "id": "stylecss"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "gestioneattivazioneclausole.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "ProvisionSet/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "pattern": "Provision/{Gjahr},{Zammin},{Zufficioliv1},{Zufficioliv2},{Zcoddecr},{ZCodIpe},{ZNumCla},{ZCodCla},{ZStatoCla}",
+                    "name": "provision",
+                    "target": [
+                        "provision"
+                    ]
+                },
+                {
+                    "pattern": "NotAuth/{mex}",
+                    "name": "notAuth",
+                    "target": [
+                        "notAuth"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "provision": {
+                    "viewName": "Provision",
+                    "viewId": "provision",
+                    "viewLevel": 2
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "notAuth": {
+                    "viewName": "NotAuth",
+                    "viewId": "notAuth",
+                    "viewLevel": 2
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "gestioneattivazioneclausole.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        }
+    }
+}

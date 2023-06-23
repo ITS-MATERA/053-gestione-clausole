@@ -32,7 +32,7 @@ sap.ui.define(
     const PROVISION_PREVIEW_MODEL = "ProvisionPreview";
     const VISIBILITY_MODEL = "ZSS4_CA_CONI_VISIBILITA_SRV";
     const VISIBILITY_ENTITY = "ZES_CONIAUTH_SET";
-    const FILTER_SEM_OBJ = "COSP_R3_FIORI_E053";
+    const FILTER_SEM_OBJ = "ZS4_FUNZ_IMP_ATT_CLA_SRV";
     const FILTER_AUTH_OBJ = "Z_GEST_CLA";
     const ACTIVITY_CHECK_MODEL = "ActivityCheck";
     const USER_MODEL = "userParamsModel";

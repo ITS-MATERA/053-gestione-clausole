@@ -35,6 +35,8 @@ sap.ui.define(
     const EDM_TYPE = exportLibrary.EdmType;
 
     var sAgrName;
+    var sFikrs;
+    var sPrctr;
 
     return BaseController.extend(
       "gestioneattivazioneclausole.controller.Worklist",
@@ -85,7 +87,6 @@ sap.ui.define(
         onBeforeRendering: async function () {
           var self = this,
             oAuthModel = self.getModel(VISIBILITY_MODEL),
-            oUserParamsModel = self.getModel(USER_MODEL),
             btnStart = self.getView().byId("btnStart"),
             aFilters = [];
           var oView = self.getView();
@@ -93,13 +94,6 @@ sap.ui.define(
 
           aFilters.push(self.setFilterEQWithKey("SEM_OBJ", FILTER_SEM_OBJ));
           aFilters.push(self.setFilterEQWithKey("AUTH_OBJ", FILTER_AUTH_OBJ));
-
-          var oDataUserModel = await model.createUserModel();
-          model.createUserModel();
-
-          await self.loadUserParameter("FIK", oUserParamsModel, oDataUserModel);
-          await self.loadUserParameter("BUK", oUserParamsModel, oDataUserModel);
-          await self.loadUserParameter("PRC", oUserParamsModel, oDataUserModel);
 
           self
             .getModel(VISIBILITY_MODEL)
@@ -112,21 +106,14 @@ sap.ui.define(
                   var rec = data.results[0];
 
                   sAgrName = rec.AGR_NAME;
-
-                  var sFik = oUserParamsModel.getProperty("/fik");
-                  var sBuk = oUserParamsModel.getProperty("/buk");
-                  var sPrc = oUserParamsModel.getProperty("/prc");
-
-                  var bEnabled =
-                    rec.FIKRS === sFik &&
-                    rec.BUKRS === sBuk &&
-                    (rec.PRCTR === "*" || rec.PRCTR === sPrc);
+                  sFikrs = rec.FIKRS;
+                  sPrctr = rec.PRCTR;
 
                   var aResults = data.results;
 
                   var bACTV_3 = self.isIncluded(aResults, "ACTV_3", "Z03");
 
-                  if (bEnabled && bACTV_3) {
+                  if (bACTV_3) {
                     btnStart.setEnabled(true);
                   } else {
                     btnStart.setEnabled(false);
@@ -138,7 +125,6 @@ sap.ui.define(
                 },
                 error: function (error) {
                   oView.setBusy(false);
-
                   self.getRouter().navTo("notAuth", {
                     mex: self.getResourceBundle().getText("notAuthText"),
                   });
@@ -182,6 +168,8 @@ sap.ui.define(
           if (oItem.ZStatoCla === "00" && dYear !== oItem.FdatkYear) {
             btnDetails.setEnabled(false);
           } else btnDetails.setEnabled(true);
+
+          btnDetails.setEnabled(true);
         },
 
         handleChangeDatePicker: function (oEvent) {
@@ -251,6 +239,9 @@ sap.ui.define(
             ZNumCla: obj.ZNumCla,
             ZCodCla: obj.ZCodCla,
             ZStatoCla: obj.ZStatoCla,
+            AgrName: sAgrName,
+            AuthorityFikrs: sFikrs,
+            AuthorityPrctr: sPrctr,
           });
         },
         onExport: function (oEvent) {
@@ -296,6 +287,8 @@ sap.ui.define(
                 filters: headerObject.filters,
                 urlParameters: {
                   AgrName: sAgrName,
+                  AuthorityFikrs: sFikrs,
+                  AuthorityPrctr: sPrctr,
                 },
                 success: function (data, oResponse) {
                   self.getModel(WORKLIST_MODEL).setProperty("/total", data);
@@ -336,6 +329,8 @@ sap.ui.define(
           if (forExport) {
             obj = {
               AgrName: sAgrName,
+              AuthorityFikrs: sFikrs,
+              AuthorityPrctr: sPrctr,
             };
             nameModel = PROVISION_EXPORT_MODEL;
           } else {
@@ -343,6 +338,8 @@ sap.ui.define(
               $top: numRecordsForPage,
               $skip: paginatorModel.getProperty("/paginatorSkip"),
               AgrName: sAgrName,
+              AuthorityFikrs: sFikrs,
+              AuthorityPrctr: sPrctr,
             };
             nameModel = PROVISION_MODEL;
           }

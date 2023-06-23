@@ -74,45 +74,45 @@ sap.ui.define(
           return array.filter((x) => x[param] === value).length > 0;
         },
 
-        loadUserParameter: function (value, oModel, oUser) {
-          var self = this;
-          var oDataModel = self.getModel();
-          var sUser = oUser.getProperty("/currentUser");
-          if (sUser === undefined) sUser = "";
-          var pathModel = oDataModel.createKey(ENTITY_USERPARAMETERS_SET, {
-            User: sUser,
-            Name: value,
-          });
-          self
-            .getModel()
-            .metadataLoaded()
-            .then(function () {
-              oDataModel.read("/" + pathModel, {
-                success: function (data) {
-                  oModel.setProperty("/" + value.toLowerCase(), data.Value);
-                },
-                error: function (error) {},
-              });
-            });
-        },
-        getCurrentUser: function (oModel) {
-          var self = this;
-          var oDataModel = self.getModel(USER_MODEL);
-          var pathModel = "Users('<current>')";
+        // loadUserParameter: function (value, oModel, oUser) {
+        //   var self = this;
+        //   var oDataModel = self.getModel();
+        //   var sUser = oUser.getProperty("/currentUser");
+        //   if (sUser === undefined) sUser = "";
+        //   var pathModel = oDataModel.createKey(ENTITY_USERPARAMETERS_SET, {
+        //     User: sUser,
+        //     Name: value,
+        //   });
+        //   self
+        //     .getModel()
+        //     .metadataLoaded()
+        //     .then(function () {
+        //       oDataModel.read("/" + pathModel, {
+        //         success: function (data) {
+        //           oModel.setProperty("/" + value.toLowerCase(), data.Value);
+        //         },
+        //         error: function (error) {},
+        //       });
+        //     });
+        // },
+        // getCurrentUser: function (oModel) {
+        //   var self = this;
+        //   var oDataModel = self.getModel(USER_MODEL);
+        //   var pathModel = "Users('<current>')";
 
-          self
-            .getModel()
-            .metadataLoaded()
-            .then(function () {
-              oDataModel.read("/" + pathModel, {
-                success: function (data) {
-                  oModel.setProperty("/" + "currentUser", data.Id);
-                  return data.Id;
-                },
-                error: function (error) {},
-              });
-            });
-        },
+        //   self
+        //     .getModel()
+        //     .metadataLoaded()
+        //     .then(function () {
+        //       oDataModel.read("/" + pathModel, {
+        //         success: function (data) {
+        //           oModel.setProperty("/" + "currentUser", data.Id);
+        //           return data.Id;
+        //         },
+        //         error: function (error) {},
+        //       });
+        //     });
+        // },
 
         /* BUSY DIALOG START */
 

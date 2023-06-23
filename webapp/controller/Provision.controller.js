@@ -47,6 +47,8 @@ sap.ui.define(
     const TABLE_ASSIGN = "tableAssign";
 
     var sAgrName;
+    var sFikrs;
+    var sPrctr;
 
     return BaseController.extend(
       "gestioneattivazioneclausole.controller.Provision",
@@ -109,6 +111,7 @@ sap.ui.define(
 
           this.setModel(oViewModelUserParams, USER_MODEL);
         },
+
         _setVisibility: async function () {
           var self = this,
             oAuthModel = self.getModel(VISIBILITY_MODEL),
@@ -121,10 +124,6 @@ sap.ui.define(
           aFilters.push(self.setFilterEQWithKey("SEM_OBJ", FILTER_SEM_OBJ));
           aFilters.push(self.setFilterEQWithKey("AUTH_OBJ", FILTER_AUTH_OBJ));
 
-          await self.getCurrentUser(oUserParamsModel);
-          await self.loadUserParameter("FIK", oUserParamsModel);
-          await self.loadUserParameter("BUK", oUserParamsModel);
-          await self.loadUserParameter("PRC", oUserParamsModel);
           self
             .getModel(VISIBILITY_MODEL)
             .metadataLoaded()
@@ -137,32 +136,21 @@ sap.ui.define(
                   var rec = data.results[0];
 
                   sAgrName = rec.AGR_NAME;
-
-                  var sFik = oUserParamsModel.getProperty("/fik");
-                  var sBuk = oUserParamsModel.getProperty("/buk");
-                  var sPrc = oUserParamsModel.getProperty("/prc");
-
-                  var bEnabled =
-                    rec.FIKRS === sFik &&
-                    rec.BUKRS === sBuk &&
-                    (rec.PRCTR === "*" || rec.PRCTR === sPrc);
+                  sFikrs = rec.FIKRS;
+                  sPrctr = rec.PRCTR;
 
                   var aResults = data.results;
-                  var bACTV_1 = self.isIncluded(aResults, "ACTV_1", "Z01");
                   var bACTV_2 = self.isIncluded(aResults, "ACTV_2", "Z02");
                   var bACTV_4 = self.isIncluded(aResults, "ACTV_4", "Z04");
                   var bACTV_5 = self.isIncluded(aResults, "ACTV_5", "Z05");
-                  var bACTV_6 = self.isIncluded(aResults, "ACTV_6", "Z06");
 
                   var check = {
-                    Change: bACTV_2 && bACTV_6,
-                    Active: bACTV_1 && bACTV_4,
-                    Assign: bACTV_1 && bACTV_5,
+                    Change: bACTV_2,
+                    Active: bACTV_4,
+                    Assign: bACTV_5,
                   };
 
-                  bEnabled
-                    ? self._setButtonEnabled(check)
-                    : btnAction.setEnabled(false);
+                  self._setButtonEnabled(check);
                   var oModel = new sap.ui.model.json.JSONModel();
                   oModel.setData(check);
                   self.setModel(oModel, ACTIVITY_CHECK_MODEL);
@@ -533,14 +521,28 @@ sap.ui.define(
             oView = self.getView();
           self._resetOnMatched(oParameters.ZStatoCla, "");
           self._setVisiblePanel(oParameters);
+          sAgrName = oParameters.AgrName;
+          sFikrs = oParameters.AuthorityFikrs;
+          sPrctr = oParameters.AuthorityPrctr;
+
+          var oFilterProvision = {
+            AgrName: oParameters.AgrName,
+            AuthorityFikrs: oParameters.AuthorityFikrs,
+            AuthorityPrctr: oParameters.AuthorityPrctr,
+          };
+          delete oParameters.AgrName;
+          delete oParameters.AuthorityFikrs;
+          delete oParameters.AuthorityPrctr;
           oView.setBusy(true);
 
           var path = self._createKeyPath(oParameters, ENTITY_PROVISION_SET);
+
           self
             .getModel()
             .metadataLoaded()
             .then(function () {
               oDataModel.read("/" + path, {
+                urlParameters: oFilterProvision,
                 success: function (data, oResponse) {
                   var oModelJson = new sap.ui.model.json.JSONModel();
                   oModelJson.setData(data);
@@ -626,6 +628,8 @@ sap.ui.define(
             $top: numRecordsForPage,
             Stato: ZStatoCla,
             AgrName: sAgrName,
+            AuthorityFikrs: sFikrs,
+            AuthorityPrctr: sPrctr,
           };
           if (nameModel === BENEFICIARY_MODEL) {
             obj = {};
@@ -651,18 +655,18 @@ sap.ui.define(
             dataModel = data;
             bCount = false;
           } else if (nameModel === PROVISION_ITEMS_MODEL) {
-            provisionView.setProperty("/FipexEng", data.results[0].FipexEng);
-            provisionView.setProperty("/FistlEng", data.results[0].FistlEng);
-            provisionView.setProperty("/ZgeberEng", data.results[0].ZgeberEng);
+            provisionView.setProperty("/FipexEng", data.results[0]?.FipexEng);
+            provisionView.setProperty("/FistlEng", data.results[0]?.FistlEng);
+            provisionView.setProperty("/ZgeberEng", data.results[0]?.ZgeberEng);
 
             var obj = data.results[0];
-            provisionView.setProperty("/isActive", obj.IsActive);
+            provisionView.setProperty("/isActive", obj?.IsActive);
           } else if (nameModel === PROVISION_PREVIEW_MODEL) {
-            provisionView.setProperty("/ZCodIpe", data.results[0].ZCodIpe);
-            provisionView.setProperty("/FipexEng", data.results[0].FipexPost);
-            provisionView.setProperty("/FistlEng", data.results[0].FistlPost);
-            provisionView.setProperty("/ZgeberEng", data.results[0].GeberPost);
-            provisionView.setProperty("/ZidIpe", data.results[0].ZidIpe);
+            provisionView.setProperty("/ZCodIpe", data.results[0]?.ZCodIpe);
+            provisionView.setProperty("/FipexEng", data.results[0]?.FipexPost);
+            provisionView.setProperty("/FistlEng", data.results[0]?.FistlPost);
+            provisionView.setProperty("/ZgeberEng", data.results[0]?.GeberPost);
+            provisionView.setProperty("/ZidIpe", data.results[0]?.ZidIpe);
 
             oView.byId("idPanelChange").setVisible(true);
             oView.byId("idPanelChangeAssign").setVisible(false);
@@ -792,6 +796,8 @@ sap.ui.define(
                 urlParameters: {
                   Stato: sZStatoCla,
                   AgrName: sAgrName,
+                  AuthorityFikrs: sFikrs,
+                  AuthorityPrctr: sPrctr,
                 },
                 success: function (data, oResponse) {
                   provisionModel.setProperty("/" + nameModel + "Total", data);

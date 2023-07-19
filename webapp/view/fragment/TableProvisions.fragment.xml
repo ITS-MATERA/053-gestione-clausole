@@ -19,7 +19,6 @@
 				selectionChange="onSelectedItem"
 				growingScrollToLoad="true"
 				updateFinished="onUpdateFinished"
-				visible="false"
 				mode="SingleSelectLeft"
 				>
 				<headerToolbar>
@@ -90,7 +89,7 @@
                             <Text  text="{Provision>ZCodIpe}" />
                             <Text  text="{Provision>ZNumCla}" />
                             <Text   text="{Provision>FdatkYear}"/>
-                            <Text  text="{Provision>ZImpIpeCl}" />
+							<Text text="{path:'Provision>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
                             <Text text="{Provision>Ktext}" />
                             <Text  text="{
 									path: 'Provision>ZStatoCla',

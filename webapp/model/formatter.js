@@ -15,6 +15,24 @@ sap.ui.define([], function () {
       return parseFloat(sValue).toFixed(2);
     },
 
+    convertFormattedNumber : function (sValue) {
+      if (!sValue) {
+          return "";
+      }
+      
+      sValue = sValue.replace(".",",");
+      return sValue.toString().replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, ".");            
+    },
+
+    convertFormattedNumberFromHeaderLabel:function(sLabel, sValue){
+      if (!sValue) 
+        return sLabel + ": 0,00";
+      
+      sValue = sValue.replace(".",",");
+      var val = sValue.toString().replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, ".");
+      return sLabel + ": " + val;
+    },
+      
     formatStatusProvision: function (sValue) {
       var self = this,
         bundle = self.getResourceBundle();

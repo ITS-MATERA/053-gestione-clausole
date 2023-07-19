@@ -16,15 +16,38 @@
 		showNavButton="false">
 		
 		<VBox class="sapUiSmallMargin colorBlue">
+
+
+			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '01' ? true : false}">
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.attivazione" type="XML"/>
+			</Panel>
+			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '02' ? true : false}">
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.imputazione" type="XML"/>
+			</Panel>
+			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '00' ? true : false}">
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.rettifica" type="XML"/>
+			</Panel>
+			<Panel headerText="{i18n>detailsBeneficiaryTitle}" >
+				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.beneficiario" type="XML"/>
+			</Panel>
+
+
+
+
+
+
+
+
+
 			<!--DATI CLAUSOLA-->
-			<f:SimpleForm 
+			<!-- <f:SimpleForm 
 				editable="false"
 				layout="ColumnLayout"
 				title="{i18n>detailsDataTitle}"
 				columnsM="2"
 				columnsL="3"
 				columnsXL="4"
-				><!--columnsXL="{= ${Provision>/ZStatoCla} === '01' ? '4' : '6'}"-->
+				>				
 				<f:content>
 					<Label   text="{i18n>detailsNameGjahr}" />
 					<Text  class="" text="{Provision>/Gjahr}" />
@@ -81,10 +104,10 @@
 								}" />
 
 				</f:content>
-			</f:SimpleForm>
+			</f:SimpleForm> -->
 
 			<!--DATI BENEFICIARIO-->
-			<f:SimpleForm 
+			<!-- <f:SimpleForm 
 				editable="false"
 				layout="ColumnLayout"
 				title="{i18n>detailsBeneficiaryTitle}"
@@ -105,7 +128,7 @@
 					<Label text="" class="visibleXL"/>
 
 				</f:content>
-			</f:SimpleForm>
+			</f:SimpleForm> -->
 		</VBox>
 	<!--DATI -->
 		<Panel id="idPanelActive" visible="false">

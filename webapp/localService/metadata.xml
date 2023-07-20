@@ -22,7 +22,7 @@
                 <Property Name="Zufficioliv2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="Zcoddecr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZCodIpe" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Fdatk" Type="Edm.DateTime" Precision="11" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fdatk" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZNumCla" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZStatoCla" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZImpIpeCl" Type="Edm.Decimal" Precision="16" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -35,6 +35,7 @@
                 <Property Name="ZgeberEng" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZCodCla" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZcodiKErrore" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZoggSpesIm" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="Beneficiary" sap:content-version="1">
                 <Key>
@@ -165,11 +166,11 @@
                     <Parameter Name="Fipex" Type="Edm.String" Mode="In"/>
                 </FunctionImport>
                 <FunctionImport Name="ChangeProvision" ReturnType="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus" EntitySet="ReturnStatusCollection" m:HttpMethod="GET" sap:action-for="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus">
-                    <Parameter Name="ZidIpe" Type="Edm.String" Mode="In"/>
-                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In"/>
-                    <Parameter Name="Geber" Type="Edm.String" Mode="In"/>
-                    <Parameter Name="Fistl" Type="Edm.String" Mode="In"/>
                     <Parameter Name="Fipex" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fistl" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Geber" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ZidIpe" Type="Edm.String" Mode="In"/>
                 </FunctionImport>
             </EntityContainer>
             <atom:link rel="self" href="http://l2vs2slass01.mef.gov.it:8000/sap/opu/odata/sap/ZS4_FUNZ_IMP_ATT_CLA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

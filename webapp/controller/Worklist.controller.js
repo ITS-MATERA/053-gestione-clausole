@@ -81,6 +81,31 @@ sap.ui.define(
           self.setModel(oViewModelUserParams, USER_MODEL);
           self.setModel(oViewModel, WORKLIST_MODEL);
           self.setModel(oViewModelPaginator, PAGINATOR_MODEL);
+
+         var oInputfFdatkFrom = self.getView().byId("fFdatkFrom");
+
+          oInputfFdatkFrom.attachBrowserEvent(
+  
+            "keypress",
+  
+            formatter.acceptOnlyNumbers
+  
+          );  
+
+          var oInputfFdatkTo = self.getView().byId("fFdatkTo");
+
+        oInputfFdatkTo.attachBrowserEvent(
+
+          "keypress",
+
+          formatter.acceptOnlyNumbers
+
+        );
+
+        ///
+        
+
+        
         },
 
         //ACTIVITY CHECK
@@ -397,7 +422,7 @@ sap.ui.define(
           self.getLastPaginator(PAGINATOR_MODEL);
           self._getEntityProvision();
         },
-
+        
         onChangePage: function (oEvent) {
           var self = this,
             paginatorModel = self.getModel(PAGINATOR_MODEL),

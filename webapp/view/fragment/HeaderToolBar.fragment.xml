@@ -194,8 +194,9 @@
 				<VBox >
 					<items>
 						<Label  design="Bold" text="{i18n>filterNameFdatkFrom}"></Label>
-							<FlexBox alignItems="Start"	justifyContent="Start">								
-								<DatePicker
+							<FlexBox alignItems="Start"	justifyContent="Start">	
+
+								<!-- <DatePicker
 									id="fFdatkFrom"
 									placeholder="{i18n>filterPlaceholderFdatkFrom}"
 																	valueFormat="yyyy-MM-dd"
@@ -208,7 +209,21 @@
 								    <layoutData>
 										<FlexItemData  growFactor="4" />
 									</layoutData>
-								</DatePicker>
+								</DatePicker> -->
+
+								<Input
+									id="fFdatkFrom"
+									placeholder="{i18n>filterPlaceholderFdatkFrom}"
+									type ="Number"
+									value="" >
+								
+								<layoutData>
+									<FlexItemData  growFactor="4" />
+								</layoutData>
+									
+								</Input>
+
+
 							</FlexBox>
 					</items>
 					<layoutData><l:GridData  span="XL2 L4 M4 S12" /></layoutData>
@@ -219,7 +234,7 @@
 					<items>
 						<Label  design="Bold" text="{i18n>filterNameFdatkTo}"></Label>
 							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<DatePicker
+								<!-- <DatePicker
 									id="fFdatkTo"
 									placeholder="{i18n>filterPlaceholderFdatkTo}"
 								valueFormat="yyyy-MM-dd"
@@ -231,7 +246,19 @@
 								    <layoutData>
 										<FlexItemData  growFactor="4" />
 									</layoutData>
-								</DatePicker>
+								</DatePicker> -->
+
+								<Input
+									id="fFdatkTo"
+									placeholder="{i18n>filterPlaceholderFdatkTo}"
+									type ="Number"
+									value="" 
+									>	
+
+									<layoutData>
+										<FlexItemData  growFactor="4" />
+									</layoutData>
+								</Input>
 							</FlexBox>
 					</items>
 					<layoutData><l:GridData  span="XL2 L4 M4 S12" /></layoutData>

@@ -68,7 +68,7 @@
 				<VBox >
 					<items>
 						<Text   text="{i18n>detailsNameKtext}" />
-                        <Text  class="" text="{Provision>/Ktext}" />		 				 
+                        <Text  class="" text="{Provision>/ZoggSpesIm}" />		 				 
 					</items>
 					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
 				</VBox> 

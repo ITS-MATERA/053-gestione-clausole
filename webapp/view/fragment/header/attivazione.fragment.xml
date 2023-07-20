@@ -40,7 +40,7 @@
 							}">
                     <layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
                 </Text>
-                <Text  class="" text="{i18n>detailsNameKtext}: {Provision>/Ktext}" >
+                <Text  class="" text="{i18n>detailsNameKtext}: {Provision>/ZoggSpesIm}" >
                     <layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
                 </Text>
                 <!-- 3 riga -->

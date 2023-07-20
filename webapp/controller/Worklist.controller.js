@@ -83,29 +83,18 @@ sap.ui.define(
           self.setModel(oViewModelPaginator, PAGINATOR_MODEL);
 
          var oInputfFdatkFrom = self.getView().byId("fFdatkFrom");
+         var oInputfFdatkTo = self.getView().byId("fFdatkTo");
 
-          oInputfFdatkFrom.attachBrowserEvent(
-  
-            "keypress",
-  
-            formatter.acceptOnlyNumbers
-  
+          oInputfFdatkFrom.attachBrowserEvent(  
+            "keypress",  
+            formatter.acceptOnlyNumbersFdatk  
           );  
 
-          var oInputfFdatkTo = self.getView().byId("fFdatkTo");
-
-        oInputfFdatkTo.attachBrowserEvent(
-
-          "keypress",
-
-          formatter.acceptOnlyNumbers
-
-        );
-
-        ///
-        
-
-        
+          oInputfFdatkTo.attachBrowserEvent(
+            "keypress",
+            formatter.acceptOnlyNumbersFdatk
+          );
+       
         },
 
         //ACTIVITY CHECK

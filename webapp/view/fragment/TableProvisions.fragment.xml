@@ -90,7 +90,7 @@
                             <Text  text="{Provision>ZNumCla}" />
                             <Text   text="{Provision>FdatkYear}"/>
 							<Text text="{path:'Provision>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
-                            <Text text="{Provision>Ktext}" />
+                            <Text text="{Provision>ZoggSpesIm}" />
                             <Text  text="{
 									path: 'Provision>ZStatoCla',
 									formatter: '.formatter.formatStatusProvision'

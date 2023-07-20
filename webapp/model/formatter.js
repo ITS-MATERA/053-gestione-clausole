@@ -96,9 +96,9 @@ sap.ui.define([], function () {
         pattern: "yyyy-MM-dd",
       }).format(new Date());
     },
-    acceptOnlyNumbers: function (e) {
+    acceptOnlyNumbersFdatk: function (e) {
 
-      if (e.keyCode === 46 ||  e.keyCode === 101 || e.keyCode === 44) {
+      if (e.keyCode === 43 || e.keyCode === 45 || e.keyCode === 46 ||  e.keyCode === 101 || e.keyCode === 44) {
     
         e.preventDefault();
       }

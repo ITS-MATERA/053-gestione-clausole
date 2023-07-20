@@ -199,7 +199,8 @@
 									id="fFdatkFrom"
 									placeholder="{i18n>filterPlaceholderFdatkFrom}"
 									type ="Number"
-									value="" >
+									value="" 
+									app:searchPropertyModel="Fdatk">
 									<layoutData>
 										<FlexItemData  growFactor="4" />
 									</layoutData>
@@ -219,6 +220,7 @@
 									placeholder="{i18n>filterPlaceholderFdatkTo}"
 									type ="Number"
 									value="" 
+									app:searchPropertyModel="Fdatk"
 									>	
 
 									<layoutData>

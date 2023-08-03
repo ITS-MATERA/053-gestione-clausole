@@ -53,7 +53,7 @@ sap.ui.define(
             worklistTableTitle: oBundle.getText("worklistTableTitle"),
             tableNoDataText: oBundle.getText("tableNoDataText"),
             total: 0,
-            tableBusyDelay: 0,
+            // tableBusyDelay: 0,
             defaultDateFrom: formatter.defaultFormatDate(new Date()),
             defaultDateTo: formatter.defaultFormatDate(new Date()),
           });
@@ -65,7 +65,7 @@ sap.ui.define(
             btnLastEnabled: false,
             recordForPageEnabled: false,
             currentPageEnabled: true,
-            stepInputDefault: 8,
+            stepInputDefault: 20,
             currentPage: 1,
             maxPage: 1,
             paginatorSkip: 0,
@@ -162,9 +162,7 @@ sap.ui.define(
             sTitle = oBundle.getText("tableTitleOverview", [iTotalItems]);
           }
           workListModel.setProperty("/tableTitleOverview", sTitle);
-          oTable.setVisible(true);
-          oPaginatorPanel.setVisible(true);
-          self.getView().setBusy(false);
+          oPaginatorPanel.setVisible(true);          
         },
 
         onSelectedItem: function () {
@@ -260,7 +258,8 @@ sap.ui.define(
         },
         onExport: function (oEvent) {
           var self = this;
-          self._configExport();
+          self._getEntityProvision(true);
+          setTimeout(self._configExport(),3000);
         },
 
         _setEntityProperties: function () {
@@ -273,12 +272,11 @@ sap.ui.define(
 
           self.resetEntityModel(PROVISION_EXPORT_MODEL);
           self.resetEntityModel(PROVISION_MODEL);
-          oView.setBusy(true);
+         
 
           var headerObject = self.getHeaderFilter();
 
           if (!headerObject.isValidate) {
-            oView.setBusy(false);
             MessageBox.warning(
               oBundle.getText(headerObject.validationMessage),
               {
@@ -288,46 +286,9 @@ sap.ui.define(
             );
             return false;
           }
+          oView.setBusy(true);
           
           self._getEntityProvision();
-          self._getEntityProvision(true);
-
-          //COUNTER
-          // self
-          //   .getModel()
-          //   .metadataLoaded()
-          //   .then(function () {
-          //     oDataModel.read("/" + ENTITY_PROVISION_SET + "/$count", {
-          //       filters: headerObject.filters,
-          //       urlParameters: {
-          //         AgrName: sAgrName,
-          //         AuthorityFikrs: sFikrs,
-          //         AuthorityPrctr: sPrctr,
-          //       },
-          //       success: function (data, oResponse) {
-          //         self.getModel(WORKLIST_MODEL).setProperty("/total", data);
-          //         if (data > numRecordsForPage) {
-          //           paginatorModel.setProperty("/btnLastEnabled", true);
-          //           self.paginatorTotalPage = data / numRecordsForPage;
-          //           var moduleN = Number.isInteger(self.paginatorTotalPage);
-          //           if (!moduleN) {
-          //             self.paginatorTotalPage =
-          //               Math.trunc(self.paginatorTotalPage) + 1;
-          //           }
-          //           paginatorModel.setProperty(
-          //             "/maxPage",
-          //             self.paginatorTotalPage
-          //           );
-          //         } else {
-          //           paginatorModel.setProperty("/maxPage", 1);
-          //           paginatorModel.setProperty("/btnLastEnabled", false);
-          //         }
-          //       },
-          //       error: function (error) {
-          //         oView.setBusy(false);
-          //       },
-          //     });
-          //   });
         },
 
         _getEntityProvision: function (forExport = false) {
@@ -338,8 +299,8 @@ sap.ui.define(
             oView = self.getView(),
             paginatorModel = self.getModel(PAGINATOR_MODEL),
             numRecordsForPage = paginatorModel.getProperty("/stepInputDefault");
-          oView.setBusy(true);
-
+          
+          self.getView().setBusy(true);
           if (forExport) {
             obj = {
               AgrName: sAgrName,
@@ -367,6 +328,7 @@ sap.ui.define(
                 urlParameters: obj,
                 filters: headerObject.filters,
                 success: function (data, oResponse) {
+
                   var oModelJson = new sap.ui.model.json.JSONModel();
                   oModelJson.setData(data.results);
                   oView.setModel(oModelJson, nameModel);
@@ -392,6 +354,7 @@ sap.ui.define(
                     paginatorModel.setProperty("/btnLastEnabled", false);
                   }
                   oView.setBusy(false);
+                  
                 },
                 error: function (error) {
                   oView.setBusy(false);

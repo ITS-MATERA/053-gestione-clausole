@@ -14,10 +14,9 @@
 					path: 'Provision>/'
 				}"
 				noDataText="{i18n>tableNoDataText}"
-				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
 				growing="true"
-				selectionChange="onSelectedItem"
-				growingScrollToLoad="true"
+				growingScrollToLoad="true"				
+				selectionChange="onSelectedItem"				
 				updateFinished="onUpdateFinished"
 				mode="SingleSelectLeft"
 				>

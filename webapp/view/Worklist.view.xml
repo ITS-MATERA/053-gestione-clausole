@@ -11,11 +11,10 @@
 		navButtonPress="onNavBack"
 		showNavButton="false">
 		<semantic:content>
+			<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.HeaderToolBar" type="XML"/>
 
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.HeaderToolBar" type="XML"/>
-
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.TableProvisions" type="XML"/>
-
+			<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.TableProvisions" type="XML"/>
+		
 		</semantic:content>
 	</semantic:FullscreenPage>
 

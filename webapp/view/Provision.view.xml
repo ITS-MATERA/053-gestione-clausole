@@ -168,9 +168,9 @@
 		<Panel >
 		<FlexBox alignItems="Start"	justifyContent="SpaceBetween" class="sapUiTinyMarginTop">
 					<Button type="Emphasized" text="{i18n>btnBack}" tooltip="{i18n>btnBack}" press="onNavBack" />
- 
+        <!-- enabled="{= ${Provision>/ZStatoCla} === '01'  &amp;&amp; ${provisionView>/isActive} === false ? false : ${provisionView>/buttonEnabled} }" -->
 				<Button  id="idButtonActions" app:action="{= ${Provision>/ZStatoCla} === '00' ? '00': ${Provision>/ZStatoCla} === '01' ? '01': '02' }" 
-						 enabled="{= ${Provision>/ZStatoCla} === '01'  &amp;&amp; ${provisionView>/isActive} === false ? false:${provisionView>/buttonEnabled}}"
+						 enabled="{= ${provisionView>/isActive} &amp;&amp; ${provisionView>/buttonEnabled} }"
 						 type="Emphasized" text="{provisionView>/btnAction}"
  						 tooltip="{provisionView>/btnAction}" 
 						 press="onAction" /></FlexBox>

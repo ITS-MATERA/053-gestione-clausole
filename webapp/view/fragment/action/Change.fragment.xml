@@ -140,11 +140,11 @@
 						<zcontrolPosFin:LinkPosizioneFinanziaria 
 							id="linkPosFinSpesaENGPre" anno="{ProvisionPreview>FdatkYear}" eos="S" fikrs="S001" 
                             fase="GEST" reale="R" versione="D" fipex="{ProvisionPreview>FipexPre}" datbis="99991231" 
-                            text="{ProvisionPreview>FipexPre}" semanticObject="ESAMINAMODIFICA"/>
+                            text="{ProvisionPreview>FipexPre}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
 
 						<zcontrollinkSar:LinkSar id="linkSarBilancioENGPre" anno="{ProvisionPreview>FdatkYear}" 
 							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
-							bilancio="" fictr="{ProvisionPreview>FistlPre}" datbis="99991231" text="{ProvisionPreview>FistlPre}" />
+							bilancio="" fictr="{ProvisionPreview>FistlPre}" datbis="99991231" text="{ProvisionPreview>FistlPre}" wrapping="true"/>
 
 
 						<Text  text="{ProvisionPreview>GeberPre}" class="textBlueBackGray"/>
@@ -159,11 +159,11 @@
 						<zcontrolPosFin:LinkPosizioneFinanziaria 
 							id="linkPosFinSpesaENGPost" anno="{ProvisionPreview>FdatkYear}" eos="S" fikrs="S001" 
                             fase="GEST" reale="R" versione="D" fipex="{ProvisionPreview>FipexPost}" datbis="99991231" 
-                            text="{ProvisionPreview>FipexPost}" semanticObject="ESAMINAMODIFICA"/>
+                            text="{ProvisionPreview>FipexPost}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
 
 						<zcontrollinkSar:LinkSar id="linkSarBilancioENGPost" anno="{ProvisionPreview>FdatkYear}" 
 							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
-							bilancio="" fictr="{ProvisionPreview>FistlPost}" datbis="99991231" text="{ProvisionPreview>FistlPost}" />
+							bilancio="" fictr="{ProvisionPreview>FistlPost}" datbis="99991231" text="{ProvisionPreview>FistlPost}" wrapping="true"/>
 						
 						<Text  text="{ProvisionPreview>GeberPost}" class="textBlueBackGray"/>
 						<Text  text="{= ${ProvisionPreview>ZStatoPost} === '00' ?  ${i18n>status00} : ${i18n>noStatus}} " />

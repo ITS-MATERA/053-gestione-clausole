@@ -224,6 +224,17 @@ sap.ui.define(
             panelFilter.setVisible(true);
           }
         },
+
+        onBlockToggle: function () {
+          var self = this,
+              oView = self.getView();
+
+          var btnArrow = oView.byId("btnToggle");
+          btnArrow.getEnabled()
+              ? btnArrow.setEnabled(false)
+              : btnArrow.setEnabled(true);
+        },
+
         onDetails: function (oEvent) {
           var self = this,
             oView = self.getView(),

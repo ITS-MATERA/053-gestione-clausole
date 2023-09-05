@@ -541,7 +541,7 @@ sap.ui.define(
               oBundle.getText("btnActive")
             );
 
-            if (data["Active"] && sZcodiKErrore === "1") {
+            if (data["Active"] /*&& sZcodiKErrore === "1"*/) {
               provisionView.setProperty("/buttonEnabled", true);
             } else {
               provisionView.setProperty("/buttonEnabled", false);
@@ -552,9 +552,11 @@ sap.ui.define(
               oBundle.getText("btnAssign")
             );
 
-            if (data["Assign"] && sZcodiKErrore === "4") {
+            if (data["Assign"] /*&& sZcodiKErrore === "4"*/) {
               provisionView.setProperty("/buttonEnabled", true);
-            } else provisionView.setProperty("/buttonEnabled", false);
+            } 
+            else
+              provisionView.setProperty("/buttonEnabled", false);
 
             provisionView.setProperty("/buttonEnabled", true);
           }
@@ -763,7 +765,7 @@ sap.ui.define(
             provisionView.setProperty("/ZgeberEng", data.results[0]?.ZgeberEng);
 
             var obj = data.results[0];
-            provisionView.setProperty("/isActive", obj?.IsActive);
+            provisionView.setProperty("/isActive", obj.IsActive);
           } else if (nameModel === PROVISION_PREVIEW_MODEL) {
             provisionView.setProperty("/ZCodIpe", data.results[0]?.ZCodIpe);
             provisionView.setProperty("/FipexEng", data.results[0]?.FipexPost);

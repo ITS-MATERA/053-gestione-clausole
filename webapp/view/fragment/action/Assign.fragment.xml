@@ -55,11 +55,11 @@
 									<zcontrolPosFin:LinkPosizioneFinanziaria 
 									id="linkPosFinSpesaENGA" anno="{ProvisionItems>FdatkYear}" eos="S" fikrs="S001" 
 									fase="GEST" reale="R" versione="D" fipex="{ProvisionItems>FipexEng}" datbis="99991231" 
-									text="{ProvisionItems>FipexEng}" semanticObject="ESAMINAMODIFICA"/>
+									text="{ProvisionItems>FipexEng}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
 
 									<zcontrollinkSar:LinkSar id="linkSarBilancioENGA" anno="{ProvisionItems>FdatkYear}" 
 										eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
-										bilancio="" fictr="{ProvisionItems>FistlEng}" datbis="99991231" text="{ProvisionItems>FistlEng}" />	
+										bilancio="" fictr="{ProvisionItems>FistlEng}" datbis="99991231" text="{ProvisionItems>FistlEng}" wrapping="true"/>	
 
 
 									<Text  text="{ProvisionItems>ZgeberEng}" />

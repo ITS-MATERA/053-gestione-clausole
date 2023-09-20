@@ -1,117 +1,168 @@
-<core:FragmentDefinition 
+<core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
-	xmlns:core="sap.ui.core" 
-	>
-	<VBox >
-	<items>
-		<l:Grid  defaultSpan="XL12 L12 M12 S12" vSpacing="0">
-			<Table
-				id="tableProvisions"
-				width="auto"
-				class="sapUiResponsiveMargin"
+	xmlns:core="sap.ui.core"
+>
+	<VBox>
+		<items>
+			<l:Grid
+				defaultSpan="XL12 L12 M12 S12"
+				vSpacing="0"
+			>
+				<Table
+					id="tableProvisions"
+					width="auto"
+					class="sapUiResponsiveMargin"
 					items="{
-					path: 'Provision>/'
-				}"
-				noDataText="{i18n>tableNoDataText}"
-				growing="true"
-				growingScrollToLoad="true"				
-				selectionChange="onSelectedItem"				
-				updateFinished="onUpdateFinished"
-				mode="SingleSelectLeft"
+						path: 'Provision>/'
+					}"
+					noDataText="{i18n>tableNoDataText}"
+					growing="true"
+					selectionChange="onSelectedItem"
+					updateFinished="onUpdateFinished"
+					mode="SingleSelectLeft"
 				>
-				<headerToolbar>
-					<Toolbar >
-						<Label  class="textBig" design="Bold" text="{worklistView>/tableTitleOverview}" />
-						<ToolbarSpacer />
-						<Button  
-							text="{i18n>btnDetails}"
-							id = "idBtnDetails"
-							tooltip="{i18n>btnDetails}"
-							type="Emphasized"
-							icon="sap-icon://search"
-							press="onDetails"
+					<headerToolbar>
+						<Toolbar>
+							<Label
+								class="textBig"
+								design="Bold"
+								text="{worklistView>/tableTitleOverview}"
 							/>
-						<Button 
-							text="{i18n>btnExport}"
-							id = "idBtnExport"
-							tooltip="{i18n>btnExport}"
-							type="Emphasized"
-							icon="sap-icon://excel-attachment"
-							press="onExport"
+							<ToolbarSpacer/>
+							<Button
+								text="{i18n>btnDetails}"
+								id="idBtnDetails"
+								tooltip="{i18n>btnDetails}"
+								type="Emphasized"
+								icon="sap-icon://search"
+								press="onDetails"
 							/>
-					</Toolbar>
-				</headerToolbar>
-				<columns>
-					<Column minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text text="{i18n>tableNameColumnGjahr}" /></header>
-                    </Column>
-					<Column  minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text text="{i18n>tableNameColumnZammin}" /></header>
-                    </Column>
-					<Column   minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZufficioliv1}" /></header>
-                    </Column>
-					<Column   minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZufficioliv2}" /></header>
-                    </Column>
-					<Column   minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZcoddecr}" /></header>
-                    </Column>
-					<Column   minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZCodIpe}" /></header>
-                    </Column>
-					<Column  minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZNumCla}" /></header>
-                    </Column>
-					<Column  minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnFdatk}" /></header>
-                    </Column>
-					<Column  minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZImpIpeCl}" /></header>
-                    </Column>
-					<Column  minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnKtext}" /></header>
-                    </Column>
-					<Column   minScreenWidth="Tablet" demandPopin="true">
-                            <header><Text  text="{i18n>tableNameColumnZStatoCla}" /></header>
-                    </Column>
-				</columns>
-				<items>
-					<ColumnListItem  >
-						<cells>
-							<Text  text="{Provision>Gjahr}" />
-                            <Text  text="{Provision>Zammin}" />
-                            <Text  text="{Provision>Zufficioliv1}" />
-                            <Text  text="{Provision>Zufficioliv2}" />
-                            <Text  text="{Provision>Zcoddecr}" />
-                            <Text  text="{Provision>ZCodIpe}" />
-                            <Text  text="{Provision>ZNumCla}" />
-                            <Text   text="{Provision>FdatkYear}"/>
-							<Text text="{path:'Provision>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
-                            <Text text="{Provision>ZoggSpesIm}" />
-                            <Text  text="{
+							<Button
+								text="{i18n>btnExport}"
+								id="idBtnExport"
+								tooltip="{i18n>btnExport}"
+								type="Emphasized"
+								icon="sap-icon://excel-attachment"
+								press="onExport"
+							/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnGjahr}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZammin}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZufficioliv1}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZufficioliv2}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZcoddecr}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZCodIpe}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZNumCla}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnFdatk}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZImpIpeCl}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnKtext}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnZStatoCla}"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{Provision>Gjahr}"/>
+								<Text text="{Provision>Zammin}"/>
+								<Text text="{Provision>Zufficioliv1}"/>
+								<Text text="{Provision>Zufficioliv2}"/>
+								<Text text="{Provision>Zcoddecr}"/>
+								<Text text="{Provision>ZCodIpe}"/>
+								<Text text="{Provision>ZNumCla}"/>
+								<Text text="{Provision>FdatkYear}"/>
+								<Text text="{
+									path: 'Provision>ZImpIpeCl',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<Text text="{Provision>ZoggSpesIm}"/>
+								<Text text="{
 									path: 'Provision>ZStatoCla',
 									formatter: '.formatter.formatStatusProvision'
-								}" />
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
-				<Panel id="paginatorPanel" visible="false" >
-                   <core:Fragment
-						fragmentName="gestioneattivazioneclausole.view.fragment.Paginator"
-						type="XML"
-					/>
-					<layoutData>
-						<l:GridData
-							span="XL6 L6 M6 S12"
-							indent="XL3 L3 M3"
-						/>
-					</layoutData>
-                </Panel>
-		</l:Grid>
-	</items>
-</VBox>
-	
-</core:FragmentDefinition> 
+								}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:Grid>
+		</items>
+	</VBox>
+</core:FragmentDefinition>

@@ -82,19 +82,18 @@ sap.ui.define(
           self.setModel(oViewModel, WORKLIST_MODEL);
           self.setModel(oViewModelPaginator, PAGINATOR_MODEL);
 
-         var oInputfFdatkFrom = self.getView().byId("fFdatkFrom");
-         var oInputfFdatkTo = self.getView().byId("fFdatkTo");
+          var oInputfFdatkFrom = self.getView().byId("fFdatkFrom");
+          var oInputfFdatkTo = self.getView().byId("fFdatkTo");
 
-          oInputfFdatkFrom.attachBrowserEvent(  
-            "keypress",  
-            formatter.acceptOnlyNumbersFdatk  
-          );  
+          oInputfFdatkFrom.attachBrowserEvent(
+            "keypress",
+            formatter.acceptOnlyNumbersFdatk
+          );
 
           oInputfFdatkTo.attachBrowserEvent(
             "keypress",
             formatter.acceptOnlyNumbersFdatk
           );
-       
         },
 
         //ACTIVITY CHECK
@@ -153,7 +152,6 @@ sap.ui.define(
             oBundle = self.getResourceBundle(),
             oTable = oEvent.getSource(),
             workListModel = self.getModel(WORKLIST_MODEL),
-            oPaginatorPanel = self.getView().byId("paginatorPanel"),
             iTotalItems = workListModel.getProperty("/total");
 
           if (iTotalItems && oTable.getBinding("items").isLengthFinal()) {
@@ -162,7 +160,6 @@ sap.ui.define(
             sTitle = oBundle.getText("tableTitleOverview", [iTotalItems]);
           }
           workListModel.setProperty("/tableTitleOverview", sTitle);
-          oPaginatorPanel.setVisible(true);          
         },
 
         onSelectedItem: function () {
@@ -182,17 +179,6 @@ sap.ui.define(
           } else btnDetails.setEnabled(true);
 
           btnDetails.setEnabled(true);
-        },
-
-        handleChangeDatePicker: function (oEvent) {
-          var bValid = oEvent.getParameter("valid");
-
-          if (!bValid) {
-            oEvent.getSource().setValue("");
-            return;
-          }
-          var newValue = oEvent.getParameter("newValue");
-          oEvent.getSource().setValue(newValue);
         },
 
         onNavBack: function () {
@@ -227,12 +213,12 @@ sap.ui.define(
 
         onBlockToggle: function () {
           var self = this,
-              oView = self.getView();
+            oView = self.getView();
 
           var btnArrow = oView.byId("btnToggle");
           btnArrow.getEnabled()
-              ? btnArrow.setEnabled(false)
-              : btnArrow.setEnabled(true);
+            ? btnArrow.setEnabled(false)
+            : btnArrow.setEnabled(true);
         },
 
         onDetails: function (oEvent) {
@@ -264,13 +250,13 @@ sap.ui.define(
             ZStatoCla: obj.ZStatoCla,
             AgrName: sAgrName,
             AuthorityFikrs: sFikrs,
-            AuthorityPrctr: sPrctr
+            AuthorityPrctr: sPrctr,
           });
         },
         onExport: function (oEvent) {
           var self = this;
           self._getEntityProvision(true);
-          setTimeout(self._configExport(),3000);
+          setTimeout(self._configExport(), 3000);
         },
 
         _setEntityProperties: function () {
@@ -283,7 +269,6 @@ sap.ui.define(
 
           self.resetEntityModel(PROVISION_EXPORT_MODEL);
           self.resetEntityModel(PROVISION_MODEL);
-         
 
           var headerObject = self.getHeaderFilter();
 
@@ -298,7 +283,7 @@ sap.ui.define(
             return false;
           }
           oView.setBusy(true);
-          
+
           self._getEntityProvision();
         },
 
@@ -310,7 +295,7 @@ sap.ui.define(
             oView = self.getView(),
             paginatorModel = self.getModel(PAGINATOR_MODEL),
             numRecordsForPage = paginatorModel.getProperty("/stepInputDefault");
-          
+
           self.getView().setBusy(true);
           if (forExport) {
             obj = {
@@ -321,8 +306,6 @@ sap.ui.define(
             nameModel = PROVISION_EXPORT_MODEL;
           } else {
             obj = {
-              $top: numRecordsForPage,
-              $skip: paginatorModel.getProperty("/paginatorSkip"),
               AgrName: sAgrName,
               AuthorityFikrs: sFikrs,
               AuthorityPrctr: sPrctr,
@@ -339,7 +322,6 @@ sap.ui.define(
                 urlParameters: obj,
                 filters: headerObject.filters,
                 success: function (data, oResponse) {
-
                   var oModelJson = new sap.ui.model.json.JSONModel();
                   oModelJson.setData(data.results);
                   oView.setModel(oModelJson, nameModel);
@@ -365,33 +347,12 @@ sap.ui.define(
                     paginatorModel.setProperty("/btnLastEnabled", false);
                   }
                   oView.setBusy(false);
-                  
                 },
                 error: function (error) {
                   oView.setBusy(false);
                 },
               });
             });
-        },
-
-        onFirstPaginator: function (oEvent) {
-          var self = this;
-          self.getFirstPaginator(PAGINATOR_MODEL);
-          self._getEntityProvision();
-        },
-
-        onLastPaginator: function (oEvent) {
-          var self = this;
-          self.getLastPaginator(PAGINATOR_MODEL);
-          self._getEntityProvision();
-        },
-        
-        onChangePage: function (oEvent) {
-          var self = this,
-            paginatorModel = self.getModel(PAGINATOR_MODEL),
-            maxPage = paginatorModel.getProperty("/maxPage");
-          self.getChangePage(PAGINATOR_MODEL, maxPage);
-          self._getEntityProvision();
         },
 
         _configExport: function () {

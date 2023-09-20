@@ -43,9 +43,9 @@ sap.ui.define(
     const URL_ACTIVATE =
       "/sap/opu/odata/sap/ZS4_FUNZ_IMP_ATT_CLA_SRV/ActivateProvision";
 
-    const URL_F_CHANGE ="ChangeProvision";
-    const URL_F_ASSIGN ="AssignProvision";
-    const URL_F_ACTIVATE ="ActivateProvision";
+    const URL_F_CHANGE = "ChangeProvision";
+    const URL_F_ASSIGN = "AssignProvision";
+    const URL_F_ACTIVATE = "ActivateProvision";
 
     const TABLE_CHANGE_ASSIGN = "tableChangeAssign";
     const TABLE_ASSIGN = "tableAssign";
@@ -289,7 +289,7 @@ sap.ui.define(
             //   oBundle.getText("btnSave")
             // );
 
-             self.resetEntityModel(PROVISION_SAVE_MODEL);
+            self.resetEntityModel(PROVISION_SAVE_MODEL);
 
             self._readEntityRettifica(
               ENTITY_PROVISION_ITEMS_SET,
@@ -297,8 +297,8 @@ sap.ui.define(
               aFiltersSave,
               "02",
               false,
-              function(callback){
-                if(callback){
+              function (callback) {
+                if (callback) {
                   panelRect.setVisible(false);
                   panelRectSave.setVisible(true);
                   btnAction = provisionView.setProperty(
@@ -340,7 +340,7 @@ sap.ui.define(
 
         _fetchApi: function (url, oParam, sMessage) {
           var self = this,
-              oDataModel = self.getModel();
+            oDataModel = self.getModel();
           self.getView().setBusy(true);
           oDataModel.callFunction("/" + url, {
             method: "GET",
@@ -348,7 +348,7 @@ sap.ui.define(
             success: function (oData, response) {
               self.getView().setBusy(false);
               self.destroyBusyDialog();
-              self.oDialogWarn.close();  
+              self.oDialogWarn.close();
               if (oData.IsOk) {
                 self._setMessage(
                   "titleDialogEndOperation",
@@ -367,18 +367,14 @@ sap.ui.define(
                   "error"
                 );
               }
-              console.log(oData);//TODO:da canc
+              console.log(oData); //TODO:da canc
             },
             error: function (oError) {
               self.getView().setBusy(false);
               self.destroyBusyDialog();
               self.oDialogWarn.close();
-              self._setMessage(
-                "titleDialogError",
-                oError.message,
-                "error"
-              );
-            }
+              self._setMessage("titleDialogError", oError.message, "error");
+            },
           });
         },
 
@@ -451,7 +447,7 @@ sap.ui.define(
             ZCodCla: sZCodCla,
             Fipex: sFipex,
             Fistl: sFistl,
-            Geber: sGeber
+            Geber: sGeber,
           };
 
           if (sZStatoCla === "00") {
@@ -488,7 +484,6 @@ sap.ui.define(
           oView.byId("idPanelChangeActive").setVisible(false);
           oView.byId("idPanelAssign").setVisible(false);
           oView.byId("idPanelActive").setVisible(false);
-          oView.byId("paginatorPanel").setVisible(true);
           provisionView.setProperty("/ZStatoCla", sZStatoCla);
           provisionView.setProperty("/ZcodiKErrore", sZcodiKErrore);
           provisionView.setProperty("/ZCodIpe", "");
@@ -554,9 +549,7 @@ sap.ui.define(
 
             if (data["Assign"] /*&& sZcodiKErrore === "4"*/) {
               provisionView.setProperty("/buttonEnabled", true);
-            } 
-            else
-              provisionView.setProperty("/buttonEnabled", false);
+            } else provisionView.setProperty("/buttonEnabled", false);
 
             provisionView.setProperty("/buttonEnabled", true);
           }
@@ -622,8 +615,12 @@ sap.ui.define(
                     .getModel(PROVISION_MODEL)
                     .setProperty("/ZcodiKErrore", sZcodiKErrore);
 
-                  self.getModel(PROVISION_MODEL).setProperty("/GeberEng", data["GeberEng"] );
-                  self.getModel(PROVISION_MODEL).setProperty("/GeberEvg", data["GeberEvg"] );
+                  self
+                    .getModel(PROVISION_MODEL)
+                    .setProperty("/GeberEng", data["GeberEng"]);
+                  self
+                    .getModel(PROVISION_MODEL)
+                    .setProperty("/GeberEvg", data["GeberEvg"]);
 
                   self._setVisibility();
 
@@ -672,8 +669,6 @@ sap.ui.define(
               });
             });
         },
-
-
 
         _readEntity: function (
           pathModel,
@@ -730,7 +725,6 @@ sap.ui.define(
             paginatorModel.getProperty("/stepInputDefault");
 
           var obj = {
-            $top: numRecordsForPage,
             Stato: ZStatoCla,
             AgrName: sAgrName,
             AuthorityFikrs: sFikrs,
@@ -739,12 +733,7 @@ sap.ui.define(
           if (nameModel === BENEFICIARY_MODEL) {
             obj = {};
           } else if (nameModel === PROVISION_PREVIEW_MODEL) {
-            obj = {
-              $top: numRecordsForPage,
-            };
           }
-          if (forPagination)
-            obj["$skip"] = paginatorModel.getProperty("/paginatorSkip");
           return obj;
         },
 

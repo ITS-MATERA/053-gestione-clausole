@@ -1,179 +1,248 @@
-
 <c:FragmentDefinition
 	xmlns:c="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"
-	xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+	xmlns:zcontrollinkSar="custlinksar.custlinksar.controls"
 >
-	<l:VerticalLayout
-            width="100%">
-			<Label  class="sapUiTinyMarginBegin textBig" design="Bold" text="{provisionView>/titleTable}" />		
-		<l:Grid defaultSpan="XL12 L12 M12 S12" position="Center" class="">
-		<l:content>
-
-		<Table
-			id="tableChange"
-			headerText="{i18n>tableSubTitleDetailsChangeList}"
-			width="100%"
-			items="{
-				path: 'ProvisionPreview>/'
-			}"
-			noDataText="{i18n>tableNoDataText}"
-			busyIndicatorDelay="{provisionView>/delay}"
-			growing="true"
-			growingScrollToLoad="true"
-			mode="SingleSelectMaster"	
-			class="headerColor"					
-			>
-			<infoToolbar>
-				<OverflowToolbar class ="bgGray">
-					<ObjectStatus
-					class="sapUiSmallMargin fill-one textAlignCenter textBlack "
-					text="{i18n>tableSubTitleDetailsChangeIPE} {provisionView>/ZCodIpe}"
-					icon="sap-icon://color-fill"
-					 />
-				<ObjectStatus
-					class="sapUiSmallMargin fill-two textAlignCenter textBlack "
-					text="{i18n>tableSubTitleDetailsChangePRE}"
-					icon="sap-icon://color-fill"
-					 />
-					 	<ObjectStatus
-					class="sapUiSmallMargin fill-three textAlignCenter textBlack"
-					text="{i18n>tableSubTitleDetailsChangePOST}"
-					icon="sap-icon://color-fill"
-					 />
-					
-				</OverflowToolbar>
-			</infoToolbar>
-			<columns >
-			<!--ID IPE-->
-				<Column   minScreenWidth="Tablet" demandPopin="true" >
-
-						<header  >
-							<Text  text="{i18n>tableNameColumnDetailsZNumCla}" />
-							
-						</header>
-				</Column>
-			
-				<Column   minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsChangeFdatk}" />
-						</header>
-				</Column>
-
-				<Column   minScreenWidth="Tablet" demandPopin="true">
-						<header>	
-								<Text  text="{i18n>tableNameColumnDetailsZImpIpeCl}" />
-						</header>
-				</Column>
-			<!--PRE-->
-				<Column   minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsFipex}"  />
-						</header>
-				</Column>
-				
-				<Column   minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsFistl}" />
-						</header>
-				</Column>
-				
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsGeber}"/>
-						</header>
-				</Column>
-
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsZStatoCla}" />
-						</header>
-				</Column>
-			<!--POST-->
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-								<Text  text="{i18n>tableNameColumnDetailsFipex}" />
-						</header>
-				</Column>
-				
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-							<VBox>
-								<Text  text="" />
-								<Text  text="{i18n>tableNameColumnDetailsFistl}"/>
-							</VBox>
-						</header>
-				</Column>
-				
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-							<VBox>
-								<Text  text="" />
-								<Text  text="{i18n>tableNameColumnDetailsGeber}"/>
-							</VBox>
-						</header>
-				</Column>
-
-				<Column  minScreenWidth="Tablet" demandPopin="true">
-						<header>
-							<VBox>
-								<Text  text="" />
-								<Text  text="{i18n>tableNameColumnDetailsZStatoCla}" />
-							</VBox>
-						</header>
-				</Column>
-				
-			</columns>
-			<items>
-				<ColumnListItem  >
-					<cells>
-					<!--ID IPE-->
-						<Text text="{ProvisionPreview>ZNumCla}"/>
-						<Text text="{ProvisionPreview>FdatkYear}"/>
-						<Text text="{path:'ProvisionItems>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
-					<!--PRE-->
-						<!-- <Text  text="{ProvisionPreview>FipexPre}" class="textBlueBackGray"/>
+	<l:VerticalLayout width="100%">
+		<Label
+			class="sapUiTinyMarginBegin textBig"
+			design="Bold"
+			text="{provisionView>/titleTable}"
+		/>
+		<l:Grid
+			defaultSpan="XL12 L12 M12 S12"
+			position="Center"
+			class=""
+		>
+			<l:content>
+				<Table
+					id="tableChange"
+					headerText="{i18n>tableSubTitleDetailsChangeList}"
+					width="100%"
+					items="{
+						path: 'ProvisionPreview>/'
+					}"
+					noDataText="{i18n>tableNoDataText}"
+					busyIndicatorDelay="{provisionView>/delay}"
+					growing="true"
+					mode="SingleSelectMaster"
+					class="headerColor"
+				>
+					<infoToolbar>
+						<OverflowToolbar class="bgGray">
+							<ObjectStatus
+								class="sapUiSmallMargin fill-one textAlignCenter textBlack "
+								text="{i18n>tableSubTitleDetailsChangeIPE} {provisionView>/ZCodIpe}"
+								icon="sap-icon://color-fill"
+							/>
+							<ObjectStatus
+								class="sapUiSmallMargin fill-two textAlignCenter textBlack "
+								text="{i18n>tableSubTitleDetailsChangePRE}"
+								icon="sap-icon://color-fill"
+							/>
+							<ObjectStatus
+								class="sapUiSmallMargin fill-three textAlignCenter textBlack"
+								text="{i18n>tableSubTitleDetailsChangePOST}"
+								icon="sap-icon://color-fill"
+							/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<!--ID IPE-->
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZNumCla}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsChangeFdatk}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZImpIpeCl}"/>
+							</header>
+						</Column>
+						<!--PRE-->
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsFipex}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsFistl}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsGeber}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZStatoCla}"/>
+							</header>
+						</Column>
+						<!--POST-->
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsFipex}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<VBox>
+									<Text text=""/>
+									<Text text="{i18n>tableNameColumnDetailsFistl}"/>
+								</VBox>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<VBox>
+									<Text text=""/>
+									<Text text="{i18n>tableNameColumnDetailsGeber}"/>
+								</VBox>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<VBox>
+									<Text text=""/>
+									<Text text="{i18n>tableNameColumnDetailsZStatoCla}"/>
+								</VBox>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<!--ID IPE-->
+								<Text text="{ProvisionPreview>ZNumCla}"/>
+								<Text text="{ProvisionPreview>FdatkYear}"/>
+								<Text text="{
+									path: 'ProvisionItems>ZImpIpeCl',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<!--PRE-->
+								<!-- <Text  text="{ProvisionPreview>FipexPre}" class="textBlueBackGray"/>
 						<Text  text="{ProvisionPreview>FistlPre}" class="textBlueBackGray"/> -->
-
-						<zcontrolPosFin:LinkPosizioneFinanziaria 
-							id="linkPosFinSpesaENGPre" anno="{ProvisionPreview>FdatkYear}" eos="S" fikrs="S001" 
-                            fase="GEST" reale="R" versione="D" fipex="{ProvisionPreview>FipexPre}" datbis="99991231" 
-                            text="{ProvisionPreview>FipexPre}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
-
-						<zcontrollinkSar:LinkSar id="linkSarBilancioENGPre" anno="{ProvisionPreview>FdatkYear}" 
-							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
-							bilancio="" fictr="{ProvisionPreview>FistlPre}" datbis="99991231" text="{ProvisionPreview>FistlPre}" wrapping="true"/>
-
-
-						<Text  text="{ProvisionPreview>GeberPre}" class="textBlueBackGray"/>
-						<Text  text="{
+								<zcontrolPosFin:LinkPosizioneFinanziaria
+									id="linkPosFinSpesaENGPre"
+									anno="{ProvisionPreview>FdatkYear}"
+									eos="S"
+									fikrs="S001"
+									fase="GEST"
+									reale="R"
+									versione="D"
+									fipex="{ProvisionPreview>FipexPre}"
+									datbis="99991231"
+									text="{ProvisionPreview>FipexPre}"
+									semanticObject="ESAMINAMODIFICA"
+									wrapping="true"
+								/>
+								<zcontrollinkSar:LinkSar
+									id="linkSarBilancioENGPre"
+									anno="{ProvisionPreview>FdatkYear}"
+									eos="E"
+									fikrs="S001"
+									fase="GEST"
+									SEM_OBJ=""
+									reale="R"
+									versione="D"
+									bilancio=""
+									fictr="{ProvisionPreview>FistlPre}"
+									datbis="99991231"
+									text="{ProvisionPreview>FistlPre}"
+									wrapping="true"
+								/>
+								<Text
+									text="{ProvisionPreview>GeberPre}"
+									class="textBlueBackGray"
+								/>
+								<Text text="{
 									path: 'ProvisionPreview>ZStatoPre',
 									formatter: '.formatter.formatStatusProvision'
-								}" />
-					<!--POST-->
-						<!-- <Text  text="{ProvisionPreview>FipexPost}" class="textBlueBackGray"/> -->
-						<!-- <Text  text="{ProvisionPreview>FistlPost}" class="textBlueBackGray"/> -->
-
-						<zcontrolPosFin:LinkPosizioneFinanziaria 
-							id="linkPosFinSpesaENGPost" anno="{ProvisionPreview>FdatkYear}" eos="S" fikrs="S001" 
-                            fase="GEST" reale="R" versione="D" fipex="{ProvisionPreview>FipexPost}" datbis="99991231" 
-                            text="{ProvisionPreview>FipexPost}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
-
-						<zcontrollinkSar:LinkSar id="linkSarBilancioENGPost" anno="{ProvisionPreview>FdatkYear}" 
-							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
-							bilancio="" fictr="{ProvisionPreview>FistlPost}" datbis="99991231" text="{ProvisionPreview>FistlPost}" wrapping="true"/>
-						
-						<Text  text="{ProvisionPreview>GeberPost}" class="textBlueBackGray"/>
-						<Text  text="{= ${ProvisionPreview>ZStatoPost} === '00' ?  ${i18n>status00} : ${i18n>noStatus}} " />
-					</cells>
-				</ColumnListItem>
-			</items>
-		</Table>
-
-	</l:content>
-	</l:Grid>
-</l:VerticalLayout>
-		
+								}"/>
+								<!--POST-->
+								<!-- <Text  text="{ProvisionPreview>FipexPost}" class="textBlueBackGray"/> -->
+								<!-- <Text  text="{ProvisionPreview>FistlPost}" class="textBlueBackGray"/> -->
+								<zcontrolPosFin:LinkPosizioneFinanziaria
+									id="linkPosFinSpesaENGPost"
+									anno="{ProvisionPreview>FdatkYear}"
+									eos="S"
+									fikrs="S001"
+									fase="GEST"
+									reale="R"
+									versione="D"
+									fipex="{ProvisionPreview>FipexPost}"
+									datbis="99991231"
+									text="{ProvisionPreview>FipexPost}"
+									semanticObject="ESAMINAMODIFICA"
+									wrapping="true"
+								/>
+								<zcontrollinkSar:LinkSar
+									id="linkSarBilancioENGPost"
+									anno="{ProvisionPreview>FdatkYear}"
+									eos="E"
+									fikrs="S001"
+									fase="GEST"
+									SEM_OBJ=""
+									reale="R"
+									versione="D"
+									bilancio=""
+									fictr="{ProvisionPreview>FistlPost}"
+									datbis="99991231"
+									text="{ProvisionPreview>FistlPost}"
+									wrapping="true"
+								/>
+								<Text
+									text="{ProvisionPreview>GeberPost}"
+									class="textBlueBackGray"
+								/>
+								<Text text="{= ${ProvisionPreview>ZStatoPost} === '00' ?  ${i18n>status00} : ${i18n>noStatus}} "/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:content>
+		</l:Grid>
+	</l:VerticalLayout>
 </c:FragmentDefinition>

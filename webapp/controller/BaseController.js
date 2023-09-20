@@ -11,7 +11,17 @@ sap.ui.define(
     "sap/ui/model/FilterOperator",
     "sap/m/Button",
   ],
-  function (Controller, UIComponent, formatter) {
+  function (
+    Controller,
+    UIComponent,
+    library,
+    formatter,
+    Token,
+    MessageBox,
+    Fragment,
+    Filter,
+    FilterOperator
+  ) {
     "use strict";
     const EQ = sap.ui.model.FilterOperator.EQ;
     const BT = sap.ui.model.FilterOperator.BT;
@@ -234,34 +244,6 @@ sap.ui.define(
           /*START Validation*/
           object.isValidate = true;
 
-          /*Num Decree*/
-          if (self._isOneValueEmpty(sZcoddecrFrom, sZcoddecrTo)) {
-            object.isValidate = false;
-            object.validationMessage = "msgZcoddecrRequiredBoth";
-            return object;
-          }
-
-          /*Num Ipe*/
-          if (self._isOneValueEmpty(sZCodIpeFrom, sZCodIpeTo)) {
-            object.isValidate = false;
-            object.validationMessage = "msgZCodIpeRequiredBoth";
-            return object;
-          }
-
-          /*Expiry*/
-          if (self._isOneValueEmpty(sFdatkFrom, sFdatkTo)) {
-            object.isValidate = false;
-            object.validationMessage = "msgFdatkRequiredBoth";
-            return object;
-          }
-
-          /*Num Provision*/
-          if (self._isOneValueEmpty(sZNumClaFrom, sZNumClaTo)) {
-            object.isValidate = false;
-            object.validationMessage = "msgZNumClaRequiredBoth";
-            return object;
-          }
-
           /*STOP Validation*/
 
           /*Fill Filters*/
@@ -270,10 +252,32 @@ sap.ui.define(
           self._setFilterEQValue(filters, sZammin);
           self._setFilterEQValue(filters, sZufficioliv1);
           self._setFilterEQValue(filters, sZufficioliv2);
-          self._setFilterBTValue(filters, sZcoddecrFrom, sZcoddecrTo);
-          self._setFilterBTValue(filters, sZCodIpeFrom, sZCodIpeTo);
-          self._setFilterBTValue(filters, sFdatkFrom, sFdatkTo);
-          self._setFilterBTValue(filters, sZNumClaFrom, sZNumClaTo);
+
+          self.setFilterBT(
+            filters,
+            "Zcoddecr",
+            sZcoddecrFrom?.getValue(),
+            sZcoddecrTo?.getValue()
+          );
+          self.setFilterBT(
+            filters,
+            "ZCodIpe",
+            sZCodIpeFrom?.getValue(),
+            sZCodIpeTo?.getValue()
+          );
+          self.setFilterBT(
+            filters,
+            "Fdatk",
+            sFdatkFrom?.getValue(),
+            sFdatkTo?.getValue()
+          );
+          self.setFilterBT(
+            filters,
+            "ZNumCla",
+            sZNumClaFrom?.getValue(),
+            sZNumClaTo?.getValue()
+          );
+
           if (sZStatoCla.getSelectedKey() !== "t")
             self._setFilterEQKey(filters, sZStatoCla);
 
@@ -365,6 +369,26 @@ sap.ui.define(
           paginatorModel.setProperty("/maxPage", 1);
           paginatorModel.setProperty("/paginatorClick", 0);
           paginatorModel.setProperty("/paginatorSkip", 0);
+        },
+
+        /** ---------------------MODIFICHE DI ALESSIO------------------------ */
+
+        setFilterEQ: function (aFilters, sPropertyModel, sValue) {
+          if (sValue) {
+            aFilters.push(new Filter(sPropertyModel, EQ, sValue));
+          }
+        },
+
+        setFilterBT: function (aFilters, sPropertyModel, sValueFrom, sValueTo) {
+          if (sValueFrom && sValueTo) {
+            aFilters.push(new Filter(sPropertyModel, BT, sValueFrom, sValueTo));
+            return;
+          }
+          if (sValueFrom || sValueTo) {
+            this.setFilterEQ(aFilters, sPropertyModel, sValueFrom);
+            this.setFilterEQ(aFilters, sPropertyModel, sValueTo);
+            return;
+          }
         },
       }
     );

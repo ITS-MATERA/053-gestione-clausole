@@ -3,7 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
-	xmlns:core="sap.ui.core" 
+	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:semantic="sap.m.semantic"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
@@ -13,74 +13,115 @@
 		id="page"
 		navButtonPress="onNavBack"
 		class="sapUiTinyMargin"
-		showNavButton="false">
-		
+		showNavButton="false"
+	>
 		<VBox class="sapUiSmallMargin colorBlue">
-
-
-			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '01' ? true : false}">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.attivazione" type="XML"/>
+			<Panel
+				headerText="{i18n>detailsDataTitle}"
+				visible="{= ${Provision>/ZStatoCla} === '01' ? true : false}"
+			>
+				<core:Fragment
+					fragmentName="gestioneattivazioneclausole.view.fragment.header.attivazione"
+					type="XML"
+				/>
 			</Panel>
-			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '02' ? true : false}">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.imputazione" type="XML"/>
+			<Panel
+				headerText="{i18n>detailsDataTitle}"
+				visible="{= ${Provision>/ZStatoCla} === '02' ? true : false}"
+			>
+				<core:Fragment
+					fragmentName="gestioneattivazioneclausole.view.fragment.header.imputazione"
+					type="XML"
+				/>
 			</Panel>
-			<Panel headerText="{i18n>detailsDataTitle}" visible="{= ${Provision>/ZStatoCla} === '00' ? true : false}">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.rettifica" type="XML"/>
+			<Panel
+				headerText="{i18n>detailsDataTitle}"
+				visible="{= ${Provision>/ZStatoCla} === '00' ? true : false}"
+			>
+				<core:Fragment
+					fragmentName="gestioneattivazioneclausole.view.fragment.header.rettifica"
+					type="XML"
+				/>
 			</Panel>
-			<Panel headerText="{i18n>detailsBeneficiaryTitle}" >
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.header.beneficiario" type="XML"/>
+			<Panel headerText="{i18n>detailsBeneficiaryTitle}">
+				<core:Fragment
+					fragmentName="gestioneattivazioneclausole.view.fragment.header.beneficiario"
+					type="XML"
+				/>
 			</Panel>
-
 		</VBox>
-	<!--DATI -->
-		<Panel id="idPanelActive" visible="false">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.action.Active"
-							   type="XML"/>
-			</Panel>
-			<Panel id="idPanelAssign" visible="false">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.action.Assign"
-							   type="XML"/>
-			</Panel>
-			<Panel id="idPanelChangeActive" visible="false">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.action.ChangeActive"
-							   type="XML"/>
-			</Panel>
-			<Panel id="idPanelChangeAssign" visible="false">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.action.ChangeAssign"
-							   type="XML"/>
-			</Panel>
-			<Panel id="idPanelChange" visible= "false" class="sapUiTinyMargin">
-				<core:Fragment fragmentName="gestioneattivazioneclausole.view.fragment.action.Change"
-							   type="XML"/>
-			</Panel>
-			<Panel id="paginatorPanel" visible="false" >
-            <core:Fragment
-						fragmentName="gestioneattivazioneclausole.view.fragment.Paginator"
-						type="XML"
-					/>
-					<layoutData>
-						<l:GridData
-							span="XL6 L6 M6 S12"
-							indent="XL3 L3 M3"
-						/>
-					</layoutData>
-                </Panel>
-		
-		<semantic:customFooterContent  >
-		<Panel >
-		<FlexBox alignItems="Start"	justifyContent="SpaceBetween" class="sapUiTinyMarginTop">
-					<Button type="Emphasized" text="{i18n>btnBack}" tooltip="{i18n>btnBack}" press="onNavBack" />
-        <!-- enabled="{= ${Provision>/ZStatoCla} === '01'  &amp;&amp; ${provisionView>/isActive} === false ? false : ${provisionView>/buttonEnabled} }" -->
-				<Button  id="idButtonActions" app:action="{= ${Provision>/ZStatoCla} === '00' ? '00': ${Provision>/ZStatoCla} === '01' ? '01': '02' }" 
-						 enabled="{= ${provisionView>/isActive} &amp;&amp; ${provisionView>/buttonEnabled} }"
-						 type="Emphasized" text="{provisionView>/btnAction}"
- 						 tooltip="{provisionView>/btnAction}" 
-						 press="onAction" /></FlexBox>
-    
+		<!--DATI -->
+		<Panel
+			id="idPanelActive"
+			visible="false"
+		>
+			<core:Fragment
+				fragmentName="gestioneattivazioneclausole.view.fragment.action.Active"
+				type="XML"
+			/>
 		</Panel>
+		<Panel
+			id="idPanelAssign"
+			visible="false"
+		>
+			<core:Fragment
+				fragmentName="gestioneattivazioneclausole.view.fragment.action.Assign"
+				type="XML"
+			/>
+		</Panel>
+		<Panel
+			id="idPanelChangeActive"
+			visible="false"
+		>
+			<core:Fragment
+				fragmentName="gestioneattivazioneclausole.view.fragment.action.ChangeActive"
+				type="XML"
+			/>
+		</Panel>
+		<Panel
+			id="idPanelChangeAssign"
+			visible="false"
+		>
+			<core:Fragment
+				fragmentName="gestioneattivazioneclausole.view.fragment.action.ChangeAssign"
+				type="XML"
+			/>
+		</Panel>
+		<Panel
+			id="idPanelChange"
+			visible="false"
+			class="sapUiTinyMargin"
+		>
+			<core:Fragment
+				fragmentName="gestioneattivazioneclausole.view.fragment.action.Change"
+				type="XML"
+			/>
+		</Panel>
+		<semantic:customFooterContent>
+			<Panel>
+				<FlexBox
+					alignItems="Start"
+					justifyContent="SpaceBetween"
+					class="sapUiTinyMarginTop"
+				>
+					<Button
+						type="Emphasized"
+						text="{i18n>btnBack}"
+						tooltip="{i18n>btnBack}"
+						press="onNavBack"
+					/>
+					<!-- enabled="{= ${Provision>/ZStatoCla} === '01'  &amp;&amp; ${provisionView>/isActive} === false ? false : ${provisionView>/buttonEnabled} }" -->
+					<Button
+						id="idButtonActions"
+						app:action="{= ${Provision>/ZStatoCla} === '00' ? '00': ${Provision>/ZStatoCla} === '01' ? '01': '02' }"
+						enabled="{= ${provisionView>/isActive} &amp;&amp; ${provisionView>/buttonEnabled} }"
+						type="Emphasized"
+						text="{provisionView>/btnAction}"
+						tooltip="{provisionView>/btnAction}"
+						press="onAction"
+					/>
+				</FlexBox>
+			</Panel>
 		</semantic:customFooterContent>
-
-
-
 	</semantic:FullscreenPage>
 </mvc:View>

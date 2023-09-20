@@ -4,72 +4,114 @@
 	xmlns:l="sap.ui.layout"
 >
 	<VBox class="sapUiSmallMargin ">
-			<items>
-				<l:Grid  defaultSpan="XL12 L12 M12 S12" vSpacing="0">
-					<Table
-						id="tableActive"
-						width="auto"
-						class="sapUiResponsiveMargin"
-							items="{
-							path: 'ProvisionItems>/'
-						}"
-						noDataText="{i18n>tableNoDataText}"
-						busyIndicatorDelay="{provisionView>/delay}"
-						growing="true"
-						growingScrollToLoad="true"
-						mode="SingleSelectMaster"
+		<items>
+			<l:Grid
+				defaultSpan="XL12 L12 M12 S12"
+				vSpacing="0"
+			>
+				<Table
+					id="tableActive"
+					width="auto"
+					class="sapUiResponsiveMargin"
+					items="{
+						path: 'ProvisionItems>/'
+					}"
+					noDataText="{i18n>tableNoDataText}"
+					busyIndicatorDelay="{provisionView>/delay}"
+					growing="true"
+					mode="SingleSelectMaster"
+				>
+					<headerToolbar>
+						<Toolbar>
+							<Label
+								class="textBig"
+								design="Bold"
+								text="{provisionView>/titleTable}"
+							/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<!--COLONNE ATTIVAZIONE-->
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
 						>
-						<headerToolbar>
-							<Toolbar >
-								<Label  class="textBig" design="Bold" text="{provisionView>/titleTable}" />
-								<ToolbarSpacer />
-							</Toolbar>
-						</headerToolbar>
-						<columns>
-							<!--COLONNE ATTIVAZIONE-->
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsFdatk}" /></header>
-							</Column>
-							
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsZzimpfacComp}" /></header>
-							</Column>
-
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsZzimpfacCassa}" /></header>
-							</Column>
-
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsZcomp}" /></header>
-							</Column>
-
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsZcassa}" /></header>
-							</Column>
-
-							<Column   minScreenWidth="Tablet" demandPopin="true">
-									<header><Text  text="{i18n>tableNameColumnDetailsZImpIpeCl}" /></header>
-							</Column>
-		
-
-						</columns>
-						<items>
-							<ColumnListItem  >
-								<cells>
-									<!--DATI ATTIVAZIONE-->
-									<Text  text="{ProvisionItems>FdatkYear}" />
-									
-									<Text text="{path:'ProvisionItems>ZzimpfacComp', formatter:'.formatter.convertFormattedNumber'}" />
-									<Text text="{path:'ProvisionItems>ZzimpfacCassa', formatter:'.formatter.convertFormattedNumber'}" />
-									<Text text="{path:'ProvisionItems>Zcomp', formatter:'.formatter.convertFormattedNumber'}" />
-									<Text text="{path:'ProvisionItems>Zcassa', formatter:'.formatter.convertFormattedNumber'}" />
-									<Text text="{path:'ProvisionItems>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />									
-								</cells>
-							</ColumnListItem>
-						</items>
-					</Table>
-				</l:Grid>
-			</items> 
-		</VBox>
-		
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsFdatk}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZzimpfacComp}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZzimpfacCassa}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZcomp}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZcassa}"/>
+							</header>
+						</Column>
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+						>
+							<header>
+								<Text text="{i18n>tableNameColumnDetailsZImpIpeCl}"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<!--DATI ATTIVAZIONE-->
+								<Text text="{ProvisionItems>FdatkYear}"/>
+								<Text text="{
+									path: 'ProvisionItems>ZzimpfacComp',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<Text text="{
+									path: 'ProvisionItems>ZzimpfacCassa',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<Text text="{
+									path: 'ProvisionItems>Zcomp',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<Text text="{
+									path: 'ProvisionItems>Zcassa',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+								<Text text="{
+									path: 'ProvisionItems>ZImpIpeCl',
+									formatter: '.formatter.convertFormattedNumber'
+								}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:Grid>
+		</items>
+	</VBox>
 </c:FragmentDefinition>

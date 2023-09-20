@@ -15,6 +15,24 @@ sap.ui.define([], function () {
       return parseFloat(sValue).toFixed(2);
     },
 
+    convertFormattedNumber : function (sValue) {
+      if (!sValue) {
+          return "";
+      }
+      
+      sValue = sValue.replace(".",",");
+      return sValue.toString().replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, ".");            
+    },
+
+    convertFormattedNumberFromHeaderLabel:function(sLabel, sValue){
+      if (!sValue) 
+        return sLabel + ": 0,00";
+      
+      sValue = sValue.replace(".",",");
+      var val = sValue.toString().replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, ".");
+      return sLabel + ": " + val;
+    },
+      
     formatStatusProvision: function (sValue) {
       var self = this,
         bundle = self.getResourceBundle();
@@ -78,5 +96,19 @@ sap.ui.define([], function () {
         pattern: "yyyy-MM-dd",
       }).format(new Date());
     },
+    acceptOnlyNumbersFdatk: function (e) {
+
+      if (e.keyCode === 43 || e.keyCode === 45 || e.keyCode === 46 ||  e.keyCode === 101 || e.keyCode === 44) {
+    
+        e.preventDefault();
+      }
+      if (sap.ui.getCore().byId(e.currentTarget.id).getValue().length === 4)
+      {
+        e.preventDefault();
+      }
+    }
   };
+ 
+
 });
+

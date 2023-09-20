@@ -43,6 +43,10 @@ sap.ui.define(
     const URL_ACTIVATE =
       "/sap/opu/odata/sap/ZS4_FUNZ_IMP_ATT_CLA_SRV/ActivateProvision";
 
+    const URL_F_CHANGE ="ChangeProvision";
+    const URL_F_ASSIGN ="AssignProvision";
+    const URL_F_ACTIVATE ="ActivateProvision";
+
     const TABLE_CHANGE_ASSIGN = "tableChangeAssign";
     const TABLE_ASSIGN = "tableAssign";
 
@@ -278,20 +282,32 @@ sap.ui.define(
             var aFiltersSave = provisionView.getProperty(
               "/ProvisionSaveFilters"
             );
-            panelRect.setVisible(false);
-            panelRectSave.setVisible(true);
-            btnAction = provisionView.setProperty(
-              "/btnAction",
-              oBundle.getText("btnSave")
-            );
+            // panelRect.setVisible(false);
+            // panelRectSave.setVisible(true);
+            // btnAction = provisionView.setProperty(
+            //   "/btnAction",
+            //   oBundle.getText("btnSave")
+            // );
 
-            self.resetEntityModel(PROVISION_SAVE_MODEL);
+             self.resetEntityModel(PROVISION_SAVE_MODEL);
 
-            self._readEntity(
+            self._readEntityRettifica(
               ENTITY_PROVISION_ITEMS_SET,
               PROVISION_SAVE_MODEL,
               aFiltersSave,
-              "02"
+              "02",
+              false,
+              function(callback){
+                if(callback){
+                  panelRect.setVisible(false);
+                  panelRectSave.setVisible(true);
+                  btnAction = provisionView.setProperty(
+                    "/btnAction",
+                    oBundle.getText("btnSave")
+                  );
+                  // self.resetEntityModel(PROVISION_SAVE_MODEL);
+                }
+              }
             );
           } else if (btnAction === oBundle.getText("btnSave")) {
             var oTable = oView.byId(TABLE_CHANGE_ASSIGN);
@@ -321,7 +337,52 @@ sap.ui.define(
             );
           }
         },
+
         _fetchApi: function (url, oParam, sMessage) {
+          var self = this,
+              oDataModel = self.getModel();
+          self.getView().setBusy(true);
+          oDataModel.callFunction("/" + url, {
+            method: "GET",
+            urlParameters: oParam,
+            success: function (oData, response) {
+              self.getView().setBusy(false);
+              self.destroyBusyDialog();
+              self.oDialogWarn.close();  
+              if (oData.IsOk) {
+                self._setMessage(
+                  "titleDialogEndOperation",
+                  sMessage,
+                  "success"
+                );
+                self._setMessage(
+                  "titleDialogCallOperation",
+                  "msgDialogEndOperation",
+                  "success"
+                );
+              } else {
+                self._setMessage(
+                  "titleDialogError",
+                  oData.MessageText,
+                  "error"
+                );
+              }
+              console.log(oData);//TODO:da canc
+            },
+            error: function (oError) {
+              self.getView().setBusy(false);
+              self.destroyBusyDialog();
+              self.oDialogWarn.close();
+              self._setMessage(
+                "titleDialogError",
+                oError.message,
+                "error"
+              );
+            }
+          });
+        },
+
+        _fetchApi_old: function (url, oParam, sMessage) {
           var self = this;
           self.getView().setBusy(true);
           try {
@@ -384,28 +445,27 @@ sap.ui.define(
           var sZCodCla = provisionView.getProperty("/ZCodCla");
           var sFipex = provisionView.getProperty("/FipexEng");
           var sFistl = provisionView.getProperty("/FistlEng");
-          var sGeber = provisionView.getProperty("/ZgeberEng");
+          var sGeber = provisionView.getProperty("/GeberEng");
 
           var oParam = {
-            ZCodCla: "'" + sZCodCla + "'",
-            Fipex: "'" + sFipex + "'",
-            Fistl: "'" + sFistl + "'",
-            Geber: "'" + sGeber + "'",
+            ZCodCla: sZCodCla,
+            Fipex: sFipex,
+            Fistl: sFistl,
+            Geber: sGeber
           };
 
           if (sZStatoCla === "00") {
             var sZidIpe = provisionView.getProperty("/ZidIpe");
-            oParam["ZidIpe"] = "'" + sZidIpe + "'";
+            oParam["ZidIpe"] = sZidIpe;
 
             sMessage = oBundle.getText("msgDialogEndChange");
-
-            self._fetchApi(URL_CHANGE, oParam, sMessage);
+            self._fetchApi(URL_F_CHANGE, oParam, sMessage);
           } else if (sZStatoCla === "02") {
             sMessage = oBundle.getText("msgDialogEndAssign");
-            self._fetchApi(URL_ASSIGN, oParam, sMessage);
+            self._fetchApi(URL_F_ASSIGN, oParam, sMessage);
           } else if (sZStatoCla === "01") {
             sMessage = oBundle.getText("msgDialogEndActive");
-            self._fetchApi(URL_ACTIVATE, oParam, sMessage);
+            self._fetchApi(URL_F_ACTIVATE, oParam, sMessage);
           }
         },
 
@@ -481,7 +541,7 @@ sap.ui.define(
               oBundle.getText("btnActive")
             );
 
-            if (data["Active"] && sZcodiKErrore === "1") {
+            if (data["Active"] /*&& sZcodiKErrore === "1"*/) {
               provisionView.setProperty("/buttonEnabled", true);
             } else {
               provisionView.setProperty("/buttonEnabled", false);
@@ -492,9 +552,11 @@ sap.ui.define(
               oBundle.getText("btnAssign")
             );
 
-            if (data["Assign"] && sZcodiKErrore === "4") {
+            if (data["Assign"] /*&& sZcodiKErrore === "4"*/) {
               provisionView.setProperty("/buttonEnabled", true);
-            } else provisionView.setProperty("/buttonEnabled", false);
+            } 
+            else
+              provisionView.setProperty("/buttonEnabled", false);
 
             provisionView.setProperty("/buttonEnabled", true);
           }
@@ -552,12 +614,17 @@ sap.ui.define(
                   var sFistlEng = data["FistlEng"];
                   var sZcodiKErrore = data["ZcodiKErrore"];
                   var sZCodCla = data["ZCodCla"];
+                  self.getModel(PROVISION_MODEL).setProperty("/Fikrs", sFikrs);
                   self
                     .getModel(PROVISION_MODEL)
                     .setProperty("/ZCodCla", sZCodCla);
                   self
                     .getModel(PROVISION_MODEL)
                     .setProperty("/ZcodiKErrore", sZcodiKErrore);
+
+                  self.getModel(PROVISION_MODEL).setProperty("/GeberEng", data["GeberEng"] );
+                  self.getModel(PROVISION_MODEL).setProperty("/GeberEvg", data["GeberEvg"] );
+
                   self._setVisibility();
 
                   self._configEntityFilters(sFipexEng, sFistlEng, oParameters);
@@ -569,6 +636,44 @@ sap.ui.define(
               });
             });
         },
+
+        _readEntityRettifica: function (
+          pathModel,
+          nameModel,
+          aFilters,
+          ZStatoCla,
+          forPagination = false,
+          callback
+        ) {
+          var self = this;
+          var oView = self.getView();
+          var oDataModel = self.getModel();
+          oView.setBusy(true);
+          var urlParameters = self._setUrlParameters(
+            nameModel,
+            ZStatoCla,
+            forPagination
+          );
+          self
+            .getModel()
+            .metadataLoaded()
+            .then(function () {
+              oDataModel.read("/" + pathModel, {
+                filters: aFilters,
+                urlParameters: urlParameters,
+                success: function (data, oResponse) {
+                  callback(true);
+                  self._manageResult(data, nameModel, forPagination);
+                },
+                error: function (error) {
+                  callback(false);
+                  oView.setBusy(false);
+                },
+              });
+            });
+        },
+
+
 
         _readEntity: function (
           pathModel,
@@ -660,7 +765,7 @@ sap.ui.define(
             provisionView.setProperty("/ZgeberEng", data.results[0]?.ZgeberEng);
 
             var obj = data.results[0];
-            provisionView.setProperty("/isActive", obj?.IsActive);
+            provisionView.setProperty("/isActive", obj.IsActive);
           } else if (nameModel === PROVISION_PREVIEW_MODEL) {
             provisionView.setProperty("/ZCodIpe", data.results[0]?.ZCodIpe);
             provisionView.setProperty("/FipexEng", data.results[0]?.FipexPost);
@@ -670,12 +775,12 @@ sap.ui.define(
 
             oView.byId("idPanelChange").setVisible(true);
             oView.byId("idPanelChangeAssign").setVisible(false);
-            oView.byId("idPositionLabel").setVisible(false);
-            oView.byId("idStructureLabel").setVisible(false);
-            oView.byId("idAuthLabel").setVisible(false);
-            oView.byId("idPositionText").setVisible(false);
-            oView.byId("idStructureText").setVisible(false);
-            oView.byId("idAuthText").setVisible(false);
+            // oView.byId("idPositionLabel").setVisible(false);
+            // oView.byId("idStructureLabel").setVisible(false);
+            // oView.byId("idAuthLabel").setVisible(false);
+            // oView.byId("idPositionText").setVisible(false);
+            // oView.byId("idStructureText").setVisible(false);
+            // oView.byId("idAuthText").setVisible(false);
 
             provisionView.setProperty(
               "/btnAction",

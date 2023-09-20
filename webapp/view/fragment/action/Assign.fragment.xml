@@ -2,6 +2,8 @@
 	xmlns:c="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
+	xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"
+	xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
 >
 	<VBox class="sapUiSmallMargin ">
 			<items>
@@ -47,8 +49,19 @@
 							<ColumnListItem  >
 								<cells>
 									<!--DATI IMPUTAZIONE-->
-									<Text  text="{ProvisionItems>FipexEng}" />
-									<Text text="{ProvisionItems>FistlEng}" />
+									<!-- <Text  text="{ProvisionItems>FipexEng}" />
+									<Text text="{ProvisionItems>FistlEng}" /> -->
+
+									<zcontrolPosFin:LinkPosizioneFinanziaria 
+									id="linkPosFinSpesaENGA" anno="{ProvisionItems>FdatkYear}" eos="S" fikrs="S001" 
+									fase="GEST" reale="R" versione="D" fipex="{ProvisionItems>FipexEng}" datbis="99991231" 
+									text="{ProvisionItems>FipexEng}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
+
+									<zcontrollinkSar:LinkSar id="linkSarBilancioENGA" anno="{ProvisionItems>FdatkYear}" 
+										eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
+										bilancio="" fictr="{ProvisionItems>FistlEng}" datbis="99991231" text="{ProvisionItems>FistlEng}" wrapping="true"/>	
+
+
 									<Text  text="{ProvisionItems>ZgeberEng}" />
 								</cells>
 							</ColumnListItem>

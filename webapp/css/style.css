@@ -57,6 +57,10 @@ div.fill-three > span > span {
   color: #adb5bd;
 }
 
+.bgWhite {
+  background-color: rgba(235, 249, 255, 255)
+}
+
 .headerColor > table > thead > tr > th:nth-child(-n + 4) {
   background-color: #c2daff !important;
 }
@@ -78,3 +82,5 @@ div.fill-three > span > span {
 .headerColor > table > tbody > tr > td:nth-child(n + 9):nth-child(-n + 12) {
   background-color: #f8f9fa !important;
 }
+
+

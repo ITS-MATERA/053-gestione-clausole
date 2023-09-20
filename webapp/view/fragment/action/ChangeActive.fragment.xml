@@ -48,9 +48,9 @@
 							<ColumnListItem  >
 								<cells>
 									<Text  text="{ProvisionItems>FdatkYear}" />
-									<Text  text="{ProvisionItems>Zcomp}" />
-									<Text  text="{ProvisionItems>Zcassa}" />
-									<Text  text="{ProvisionItems>ZImpIpeCl}" />
+									<Text text="{path:'ProvisionItems>Zcomp', formatter:'.formatter.convertFormattedNumber'}" />
+									<Text text="{path:'ProvisionItems>Zcassa', formatter:'.formatter.convertFormattedNumber'}" />
+									<Text text="{path:'ProvisionItems>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
 								</cells>
 							</ColumnListItem>
 						</items>

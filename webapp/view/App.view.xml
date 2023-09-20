@@ -4,9 +4,9 @@
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
 
-        <App
+    <App
             id="app"
-            busy="{appView>/busy}"
-            busyIndicatorDelay="{appView>/delay}"/>
-
+            busy="{appView>/busy}" 
+            busyIndicatorDelay="{appView>/delay}"
+            />
 </mvc:View>

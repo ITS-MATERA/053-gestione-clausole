@@ -13,26 +13,29 @@
                     <PropertyRef Name="ZNumCla"/>
                     <PropertyRef Name="ZCodCla"/>
                 </Key>
+                <Property Name="GeberEng" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GeberEvg" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FdatkYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Zammin" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Amministrazione" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Zufficioliv1" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Zufficioliv2" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Zcoddecr" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="ZCodIpe" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Fdatk" Type="Edm.DateTime" Precision="11" sap:unicode="false" sap:label="Due On" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="ZNumCla" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="ZStatoCla" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Gjahr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Zammin" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Zufficioliv1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Zufficioliv2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Zcoddecr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZCodIpe" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fdatk" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZNumCla" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZStatoCla" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZImpIpeCl" Type="Edm.Decimal" Precision="16" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Ktext" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="FipexEvg" Type="Edm.String" MaxLength="24" sap:unicode="false" sap:label="Commitment item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="FistlEvg" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Funds center" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ktext" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FipexEvg" Type="Edm.String" MaxLength="24" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FistlEvg" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZgeberEvg" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="FipexEng" Type="Edm.String" MaxLength="24" sap:unicode="false" sap:label="Commitment item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="FistlEng" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Funds center" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FipexEng" Type="Edm.String" MaxLength="24" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FistlEng" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZgeberEng" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ZCodCla" Type="Edm.String" Nullable="false" MaxLength="34" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZCodCla" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZcodiKErrore" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZoggSpesIm" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="Beneficiary" sap:content-version="1">
                 <Key>
@@ -63,17 +66,17 @@
                 </Key>
                 <Property Name="Fdatk" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Due On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ZzimpfacCassa" Type="Edm.Decimal" Precision="17" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZzimpfacCassa" Type="Edm.Decimal" Precision="17" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZStatoCla" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="ZzimpfacComp" Type="Edm.Decimal" Precision="17" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZzimpfacComp" Type="Edm.Decimal" Precision="17" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FdatkYear" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ZImpIpeCl" Type="Edm.Decimal" Precision="16" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZImpIpeCl" Type="Edm.Decimal" Precision="17" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FipexEng" Type="Edm.String" Nullable="false" MaxLength="24" sap:unicode="false" sap:label="Commitment item" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="FistlEng" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Funds center" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="ZgeberEng" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZCodCla" Type="Edm.String" Nullable="false" MaxLength="34" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Zcomp" Type="Edm.Decimal" Precision="18" Scale="3" sap:unicode="false" sap:label="Total LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Zcassa" Type="Edm.Decimal" Precision="18" Scale="3" sap:unicode="false" sap:label="Total LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zcomp" Type="Edm.Decimal" Precision="17" Scale="2" sap:unicode="false" sap:label="Total LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zcassa" Type="Edm.Decimal" Precision="17" Scale="2" sap:unicode="false" sap:label="Total LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Earmarked Funds" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Blpos" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
@@ -151,23 +154,23 @@
                 <EntitySet Name="ZStatoClaMcSet" EntityType="ZS4_FUNZ_IMP_ATT_CLA_SRV.ZStatoClaMc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="UserParametersSet" EntityType="ZS4_FUNZ_IMP_ATT_CLA_SRV.UserParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <FunctionImport Name="ActivateProvision" ReturnType="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus" EntitySet="ReturnStatusCollection" m:HttpMethod="GET" sap:action-for="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus">
-                    <Parameter Name="Geber" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="Fistl" Type="Edm.String" Mode="In" MaxLength="16"/>
-                    <Parameter Name="Fipex" Type="Edm.String" Mode="In" MaxLength="24"/>
-                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In" MaxLength="33"/>
+                    <Parameter Name="Geber" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fistl" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fipex" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In"/>
                 </FunctionImport>
                 <FunctionImport Name="AssignProvision" ReturnType="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus" EntitySet="ReturnStatusCollection" m:HttpMethod="GET" sap:action-for="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus">
-                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In" MaxLength="33"/>
-                    <Parameter Name="Geber" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="Fistl" Type="Edm.String" Mode="In" MaxLength="16"/>
-                    <Parameter Name="Fipex" Type="Edm.String" Mode="In" MaxLength="24"/>
+                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Geber" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fistl" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fipex" Type="Edm.String" Mode="In"/>
                 </FunctionImport>
                 <FunctionImport Name="ChangeProvision" ReturnType="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus" EntitySet="ReturnStatusCollection" m:HttpMethod="GET" sap:action-for="ZS4_FUNZ_IMP_ATT_CLA_SRV.ReturnStatus">
-                    <Parameter Name="ZidIpe" Type="Edm.String" Mode="In" MaxLength="29"/>
-                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In" MaxLength="33"/>
-                    <Parameter Name="Geber" Type="Edm.String" Mode="In" MaxLength="18"/>
-                    <Parameter Name="Fistl" Type="Edm.String" Mode="In" MaxLength="16"/>
-                    <Parameter Name="Fipex" Type="Edm.String" Mode="In" MaxLength="24"/>
+                    <Parameter Name="Fipex" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Fistl" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Geber" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ZCodCla" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ZidIpe" Type="Edm.String" Mode="In"/>
                 </FunctionImport>
             </EntityContainer>
             <atom:link rel="self" href="http://l2vs2slass01.mef.gov.it:8000/sap/opu/odata/sap/ZS4_FUNZ_IMP_ATT_CLA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

@@ -1,0 +1,98 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"
+	xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+	<VBox class="bgWhite">
+		<items>
+			<l:Grid  defaultSpan="XL12 L12 M12 S12" vSpacing="0.2">
+			<!-- 1 riga     -->
+                <Text  class="" text="{i18n>detailsNameGjahr}: {Provision>/Gjahr}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>
+                <Text  class="" text="{i18n>detailsNameZammin}: {Provision>/Zammin}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>                
+				<Text  class="" text="{i18n>detailsNameZcoddecr}: {Provision>/Zcoddecr}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>
+                <Text  class="" text="{i18n>detailsNameZCodIpe}: {Provision>/ZCodIpe}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>
+				<Text  class="" text="{i18n>detailsNameZNumCla}: {Provision>/ZNumCla}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>
+                <Text  class="" text="{i18n>detailsNameFdatk}: {Provision>/FdatkYear}" >
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>   
+			<!-- 2 riga     -->
+				<Text  class="" 
+					text="{
+							parts: [
+								{path: 'i18n>detailsNameZImpIpeCl'},
+								{path: 'Provision>/ZImpIpeCl'}
+							],
+							formatter: '.formatter.convertFormattedNumberFromHeaderLabel'
+							}">
+                    <layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+                </Text>
+				<VBox >
+					<items>
+						<Text   text="{i18n>detailsNameFipexEVG}" />
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaEVGImputazione" anno="{Provision>/Gjahr}" eos="S" fikrs="S001" 
+                            fase="GEST" reale="R" versione="D" fipex="{Provision>/FipexEvg}" datbis="99991231" 
+                            text="{Provision>/FipexEvg}" semanticObject="ESAMINAMODIFICA"/>
+					</items>
+					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+				</VBox> 
+                <VBox >
+					<items>
+						<Text   text="{i18n>detailsNameFistlEVG}" />
+                        <zcontrollinkSar:LinkSar id="linkSarBilancioEVGImputazione" anno="{Provision>/Gjahr}" 
+							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
+							bilancio="" fictr="{Provision>/FistlEvg}" datbis="99991231" text="{Provision>/FistlEvg}" />		 				 
+					</items>
+					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+				</VBox> 
+                <VBox >
+					<items>
+						<Text   text="{i18n>detailsNameGeberEVG}" />
+                        <Text  class="" text="{Provision>/ZgeberEvg}" />		 				 
+					</items>
+					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+				</VBox> 
+				<VBox >
+					<items>
+						<Text   text="{i18n>detailsNameKtext}" />
+                        <Text  class="" text="{Provision>/ZoggSpesIm}" />		 				 
+					</items>
+					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+				</VBox> 
+				<VBox >
+					<items>
+						<Text   text="{i18n>detailsNameZStatoCla}" />
+                        <Text text="{
+									path: 'Provision>/ZStatoCla',
+									formatter: '.formatter.formatStatusProvision'
+                        }" />		 				 
+					</items>
+					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>
+				</VBox>
+				<!-- 3 riga -->
+				<VBox >
+					<items>
+						<Text   text="{i18n>detailsNameZcodiKErrore}" />
+                        <Text text="{
+									path: 'Provision>/ZcodiKErrore',
+									formatter: '.formatter.formatMotivation'
+								}" />		 				 
+					</items>
+					<layoutData><l:GridData indent="XL8 L8" span="XL2 L2 M6 S12"/></layoutData>
+				</VBox> 
+			</l:Grid>
+        </items>
+    </VBox>        	
+</c:FragmentDefinition>

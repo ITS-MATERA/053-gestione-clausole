@@ -53,7 +53,7 @@ sap.ui.define(
             worklistTableTitle: oBundle.getText("worklistTableTitle"),
             tableNoDataText: oBundle.getText("tableNoDataText"),
             total: 0,
-            tableBusyDelay: 0,
+            // tableBusyDelay: 0,
             defaultDateFrom: formatter.defaultFormatDate(new Date()),
             defaultDateTo: formatter.defaultFormatDate(new Date()),
           });
@@ -65,7 +65,7 @@ sap.ui.define(
             btnLastEnabled: false,
             recordForPageEnabled: false,
             currentPageEnabled: true,
-            stepInputDefault: 8,
+            stepInputDefault: 20,
             currentPage: 1,
             maxPage: 1,
             paginatorSkip: 0,
@@ -81,6 +81,20 @@ sap.ui.define(
           self.setModel(oViewModelUserParams, USER_MODEL);
           self.setModel(oViewModel, WORKLIST_MODEL);
           self.setModel(oViewModelPaginator, PAGINATOR_MODEL);
+
+         var oInputfFdatkFrom = self.getView().byId("fFdatkFrom");
+         var oInputfFdatkTo = self.getView().byId("fFdatkTo");
+
+          oInputfFdatkFrom.attachBrowserEvent(  
+            "keypress",  
+            formatter.acceptOnlyNumbersFdatk  
+          );  
+
+          oInputfFdatkTo.attachBrowserEvent(
+            "keypress",
+            formatter.acceptOnlyNumbersFdatk
+          );
+       
         },
 
         //ACTIVITY CHECK
@@ -148,9 +162,7 @@ sap.ui.define(
             sTitle = oBundle.getText("tableTitleOverview", [iTotalItems]);
           }
           workListModel.setProperty("/tableTitleOverview", sTitle);
-          oTable.setVisible(true);
-          oPaginatorPanel.setVisible(true);
-          self.getView().setBusy(false);
+          oPaginatorPanel.setVisible(true);          
         },
 
         onSelectedItem: function () {
@@ -212,6 +224,17 @@ sap.ui.define(
             panelFilter.setVisible(true);
           }
         },
+
+        onBlockToggle: function () {
+          var self = this,
+              oView = self.getView();
+
+          var btnArrow = oView.byId("btnToggle");
+          btnArrow.getEnabled()
+              ? btnArrow.setEnabled(false)
+              : btnArrow.setEnabled(true);
+        },
+
         onDetails: function (oEvent) {
           var self = this,
             oView = self.getView(),
@@ -241,12 +264,13 @@ sap.ui.define(
             ZStatoCla: obj.ZStatoCla,
             AgrName: sAgrName,
             AuthorityFikrs: sFikrs,
-            AuthorityPrctr: sPrctr,
+            AuthorityPrctr: sPrctr
           });
         },
         onExport: function (oEvent) {
           var self = this;
-          self._configExport();
+          self._getEntityProvision(true);
+          setTimeout(self._configExport(),3000);
         },
 
         _setEntityProperties: function () {
@@ -259,12 +283,11 @@ sap.ui.define(
 
           self.resetEntityModel(PROVISION_EXPORT_MODEL);
           self.resetEntityModel(PROVISION_MODEL);
-          oView.setBusy(true);
+         
 
           var headerObject = self.getHeaderFilter();
 
           if (!headerObject.isValidate) {
-            oView.setBusy(false);
             MessageBox.warning(
               oBundle.getText(headerObject.validationMessage),
               {
@@ -274,46 +297,9 @@ sap.ui.define(
             );
             return false;
           }
-
+          oView.setBusy(true);
+          
           self._getEntityProvision();
-          self._getEntityProvision(true);
-
-          //COUNTER
-          self
-            .getModel()
-            .metadataLoaded()
-            .then(function () {
-              oDataModel.read("/" + ENTITY_PROVISION_SET + "/$count", {
-                filters: headerObject.filters,
-                urlParameters: {
-                  AgrName: sAgrName,
-                  AuthorityFikrs: sFikrs,
-                  AuthorityPrctr: sPrctr,
-                },
-                success: function (data, oResponse) {
-                  self.getModel(WORKLIST_MODEL).setProperty("/total", data);
-                  if (data > numRecordsForPage) {
-                    paginatorModel.setProperty("/btnLastEnabled", true);
-                    self.paginatorTotalPage = data / numRecordsForPage;
-                    var moduleN = Number.isInteger(self.paginatorTotalPage);
-                    if (!moduleN) {
-                      self.paginatorTotalPage =
-                        Math.trunc(self.paginatorTotalPage) + 1;
-                    }
-                    paginatorModel.setProperty(
-                      "/maxPage",
-                      self.paginatorTotalPage
-                    );
-                  } else {
-                    paginatorModel.setProperty("/maxPage", 1);
-                    paginatorModel.setProperty("/btnLastEnabled", false);
-                  }
-                },
-                error: function (error) {
-                  oView.setBusy(false);
-                },
-              });
-            });
         },
 
         _getEntityProvision: function (forExport = false) {
@@ -324,8 +310,8 @@ sap.ui.define(
             oView = self.getView(),
             paginatorModel = self.getModel(PAGINATOR_MODEL),
             numRecordsForPage = paginatorModel.getProperty("/stepInputDefault");
-          oView.setBusy(true);
-
+          
+          self.getView().setBusy(true);
           if (forExport) {
             obj = {
               AgrName: sAgrName,
@@ -353,10 +339,33 @@ sap.ui.define(
                 urlParameters: obj,
                 filters: headerObject.filters,
                 success: function (data, oResponse) {
+
                   var oModelJson = new sap.ui.model.json.JSONModel();
                   oModelJson.setData(data.results);
                   oView.setModel(oModelJson, nameModel);
+
+                  var mex = JSON.parse(oResponse.headers["sap-message"]);
+                  var total = parseInt(mex.message);
+
+                  self.getModel(WORKLIST_MODEL).setProperty("/total", total);
+                  if (total > numRecordsForPage) {
+                    paginatorModel.setProperty("/btnLastEnabled", true);
+                    self.paginatorTotalPage = total / numRecordsForPage;
+                    var moduleN = Number.isInteger(self.paginatorTotalPage);
+                    if (!moduleN) {
+                      self.paginatorTotalPage =
+                        Math.trunc(self.paginatorTotalPage) + 1;
+                    }
+                    paginatorModel.setProperty(
+                      "/maxPage",
+                      self.paginatorTotalPage
+                    );
+                  } else {
+                    paginatorModel.setProperty("/maxPage", 1);
+                    paginatorModel.setProperty("/btnLastEnabled", false);
+                  }
                   oView.setBusy(false);
+                  
                 },
                 error: function (error) {
                   oView.setBusy(false);
@@ -376,7 +385,7 @@ sap.ui.define(
           self.getLastPaginator(PAGINATOR_MODEL);
           self._getEntityProvision();
         },
-
+        
         onChangePage: function (oEvent) {
           var self = this,
             paginatorModel = self.getModel(PAGINATOR_MODEL),

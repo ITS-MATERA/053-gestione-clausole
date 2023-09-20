@@ -1,0 +1,26 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    <VBox class="bgWhite">
+		<items>
+			<l:Grid  defaultSpan="XL12 L12 M12 S12" vSpacing="0.2">
+                <!-- 1 riga     -->
+                <Text  class="" text="{i18n>detailsBeneficiaryNameLifnr}: {Beneficiary>/Lifnr}" >
+                    <layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
+                </Text>
+                <Text  class="" text="{i18n>detailsBeneficiaryNameStcd1}: {Beneficiary>/Stcd1}" >
+                    <layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
+                </Text>
+                <Text  class="" text="{i18n>detailsBeneficiaryNameStcd2}: {Beneficiary>/Stcd2}" >
+                    <layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
+                </Text>
+            </l:Grid>
+        </items>
+    </VBox>        	
+
+</c:FragmentDefinition>

@@ -73,7 +73,9 @@
         "sap.ui.comp": {},
         "sap.ui.generic.app": {},
         "sap.ui.table": {},
-        "sap.ushell": {}
+        "sap.ushell": {},
+        "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink":{},
+        "custlinksar.custlinksar": {}
       }
     },
     "contentDensities": {

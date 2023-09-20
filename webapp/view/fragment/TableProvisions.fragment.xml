@@ -14,12 +14,10 @@
 					path: 'Provision>/'
 				}"
 				noDataText="{i18n>tableNoDataText}"
-				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
 				growing="true"
-				selectionChange="onSelectedItem"
-				growingScrollToLoad="true"
+				growingScrollToLoad="true"				
+				selectionChange="onSelectedItem"				
 				updateFinished="onUpdateFinished"
-				visible="false"
 				mode="SingleSelectLeft"
 				>
 				<headerToolbar>
@@ -90,8 +88,8 @@
                             <Text  text="{Provision>ZCodIpe}" />
                             <Text  text="{Provision>ZNumCla}" />
                             <Text   text="{Provision>FdatkYear}"/>
-                            <Text  text="{Provision>ZImpIpeCl}" />
-                            <Text text="{Provision>Ktext}" />
+							<Text text="{path:'Provision>ZImpIpeCl', formatter:'.formatter.convertFormattedNumber'}" />
+                            <Text text="{Provision>ZoggSpesIm}" />
                             <Text  text="{
 									path: 'Provision>ZStatoCla',
 									formatter: '.formatter.formatStatusProvision'

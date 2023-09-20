@@ -9,7 +9,7 @@
       "ui5": {
         "language": "EN",
         "package": "Z_ACN_S4_COSP_FIORI",
-        "bspcontainer": "Z_S4_ATTCLA",
+        "bspcontainer": "Z_S4_IMPATTCLA",
         "bspcontainer_text": "Funzionalità per imputazione e attivazione clausole",
         "calc_appindex": true,
         "transportno": "S2SK919311"

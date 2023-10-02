@@ -1,317 +1,431 @@
-<core:FragmentDefinition 
+<core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
-	xmlns:core="sap.ui.core" 
-	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
 	<VBox class="bgWhite">
 		<items>
-			<l:Grid id="_idVBoxGridToolBar" defaultSpan="XL12 L12 M12 S12" vSpacing="0" class="sapUiSmallMargin">
-								
+			<l:Grid
+				id="_idVBoxGridToolBar"
+				defaultSpan="XL12 L12 M12 S12"
+				vSpacing="0"
+				class="sapUiSmallMargin"
+			>
 				<!-- ESERCIZIO DECRETO -->
-				 <VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameGjahr}" required = "true" tooltip = "required" labelFor="fExercise"></Label>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameGjahr}"
+							required="true"
+							tooltip="required"
+							labelFor="fExercise"
+						/>
 						<ComboBox
 							id="fGjahr"
 							width="100%"
 							app:searchPropertyModel="Gjahr"
 							items="{
 								path: '/GjahrMcSet',
-								sorter: { path: 'Gjahr' }
+								sorter: {
+									path: 'Gjahr'
+								}
 							}"
-							>
-							<core:Item  key="{Gjahr}" text="{Gjahr}" />
+						>
+							<core:Item
+								key="{Gjahr}"
+								text="{Gjahr}"
+							/>
 						</ComboBox>
 					</items>
-					<layoutData><l:GridData span="XL3 L3 M6 S12"/></layoutData>
-				</VBox> 
-
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
+				</VBox>
 				<!-- AMMINISTRAZIONE -->
-				 <VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZammin}" required = "true" tooltip = "required"></Label>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZammin}"
+							required="true"
+							tooltip="required"
+						/>
 						<ComboBox
 							id="fZammin"
 							width="100%"
 							app:searchPropertyModel="Zammin"
 							items="{
 								path: '/ZamminMcSet',
-								sorter: { path: 'Zammin' }
+								sorter: {
+									path: 'Zammin'
+								}
 							}"
-							>
-							<core:Item  key="{Zammin}" text="{Zammin}" />
+						>
+							<core:Item
+								key="{Zammin}"
+								text="{Zammin}"
+							/>
 						</ComboBox>
 					</items>
-					<layoutData><l:GridData	 span="XL3 L3 M6 S12"/></layoutData>
-				</VBox> 
-
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
+				</VBox>
 				<!-- UFFICIO 1 LIVELLO -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZufficioliv1}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZufficioliv1"
-									placeholder="{i18n>filterPlaceholderZufficioliv1}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="Zufficioliv1"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>Zufficioliv1}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZufficioliv1}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZufficioliv1"
+								placeholder="{i18n>filterPlaceholderZufficioliv1}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="Zufficioliv1"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>Zufficioliv1}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- UFFICIO 2 LIVELLO -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZufficioliv2}"></Label>
-							<FlexBox alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZufficioliv2"
-									placeholder="{i18n>filterPlaceholderZufficioliv2}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="Zufficioliv2"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>Zufficioliv2}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZufficioliv2}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZufficioliv2"
+								placeholder="{i18n>filterPlaceholderZufficioliv2}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="Zufficioliv2"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>Zufficioliv2}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO DECRETO DA -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZcoddecrFrom}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZcoddecrFrom"
-									placeholder="{i18n>filterPlaceholderZcoddecrFrom}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="Zcoddecr"
-									>	
-									<suggestionItems>
-										<core:Item text="{Provison>Zcoddecr}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZcoddecrFrom}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZcoddecrFrom"
+								placeholder="{i18n>filterPlaceholderZcoddecrFrom}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="Zcoddecr"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>Zcoddecr}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" linebreak="true"/></layoutData>
+					<layoutData>
+						<l:GridData
+							span="XL3 L3 M6 S12"
+							linebreak="true"
+						/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO DECRETO A -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZcoddecrTo}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZcoddecrTo"
-									placeholder="{i18n>filterPlaceholderZcoddecrTo}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="Zcoddecr"
-									>	
-									<suggestionItems>
-										<core:Item text="{Provison>Zcoddecr}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZcoddecrTo}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZcoddecrTo"
+								placeholder="{i18n>filterPlaceholderZcoddecrTo}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="Zcoddecr"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>Zcoddecr}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12"/></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO IPE DA -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZCodIpeFrom}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZCodIpeFrom"
-									placeholder="{i18n>filterPlaceholderZCodIpeFrom}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="ZCodIpe"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>ZCodIpe}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZCodIpeFrom}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZCodIpeFrom"
+								placeholder="{i18n>filterPlaceholderZCodIpeFrom}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="ZCodIpe"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>ZCodIpe}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO IPE A -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZCodIpeTo}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZCodIpeTo"
-									placeholder="{i18n>filterPlaceholderZCodIpeTo}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="ZCodIpe"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>ZCodIpe}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZCodIpeTo}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZCodIpeTo"
+								placeholder="{i18n>filterPlaceholderZCodIpeTo}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="ZCodIpe"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>ZCodIpe}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12"/></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-				
 				<!-- ESIGIBILITA DA -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameFdatkFrom}"></Label>
-							<FlexBox alignItems="Start"	justifyContent="Start">	
-								<Input
-									id="fFdatkFrom"
-									placeholder="{i18n>filterPlaceholderFdatkFrom}"
-									type ="Number"
-									value="" 
-									app:searchPropertyModel="Fdatk">
-									<layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameFdatkFrom}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<DatePicker
+								id="fFdatkFrom"
+								displayFormat="yyyy"
+								valueFormat="yyyy"
+								placeholder=" "
+								app:searchPropertyModel="Fdatk"
+							>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</DatePicker>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+					<layoutData>
+						<l:GridData
+							span="XL3 L3 M6 S12"
+							linebreak="true"
+						/>
+					</layoutData>
 				</VBox>
-
 				<!-- ESIGIBILITA A -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameFdatkTo}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fFdatkTo"
-									placeholder="{i18n>filterPlaceholderFdatkTo}"
-									type ="Number"
-									value="" 
-									app:searchPropertyModel="Fdatk"
-									>	
-
-									<layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameFdatkTo}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<DatePicker
+								id="fFdatkTo"
+								displayFormat="yyyy"
+								valueFormat="yyyy"
+								placeholder=" "
+								app:searchPropertyModel="Fdatk"
+							>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</DatePicker>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO CLAUSOLA DA -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZNumClaFrom}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZNumClaFrom"
-									placeholder="{i18n>filterPlaceholderZNumClaFrom}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="ZNumCla"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>ZNumCla}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZNumClaFrom}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZNumClaFrom"
+								placeholder="{i18n>filterPlaceholderZNumClaFrom}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="ZNumCla"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>ZNumCla}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-
 				<!-- NUMERO CLAUSOLA A -->
-				<VBox >
+				<VBox>
 					<items>
-						<Label  design="Bold" text="{i18n>filterNameZNumClaTo}"></Label>
-							<FlexBox  alignItems="Start"	justifyContent="Start">								
-								<Input
-									id="fZNumClaTo"
-									placeholder="{i18n>filterPlaceholderZNumClaTo}"
-									showSuggestion="true"
-									suggestionItems="{/Provison>}"
-						            app:searchPropertyModel="ZNumCla"
-									>	
-									<suggestionItems>
-										<core:Item  text="{Provison>ZNumCla}" />
-									</suggestionItems>
-								    <layoutData>
-										<FlexItemData  growFactor="4" />
-									</layoutData>
-								</Input>
-							</FlexBox>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZNumClaTo}"
+						/>
+						<FlexBox
+							alignItems="Start"
+							justifyContent="Start"
+						>
+							<Input
+								id="fZNumClaTo"
+								placeholder="{i18n>filterPlaceholderZNumClaTo}"
+								showSuggestion="true"
+								suggestionItems="{/Provison>}"
+								app:searchPropertyModel="ZNumCla"
+							>
+								<suggestionItems>
+									<core:Item text="{Provison>ZNumCla}"/>
+								</suggestionItems>
+								<layoutData>
+									<FlexItemData growFactor="4"/>
+								</layoutData>
+							</Input>
+						</FlexBox>
 					</items>
-					<layoutData><l:GridData  span="XL3 L3 M6 S12" /></layoutData>
+					<layoutData>
+						<l:GridData span="XL3 L3 M6 S12"/>
+					</layoutData>
 				</VBox>
-			
-
 				<!-- STATO CLAUSOLA -->
-				 <VBox >
+				<VBox>
 					<items>
-						<Label design="Bold" text="{i18n>filterNameZStatoCla}"></Label>
+						<Label
+							design="Bold"
+							text="{i18n>filterNameZStatoCla}"
+						/>
 						<ComboBox
 							id="fZStatoCla"
 							width="100%"
 							app:searchPropertyModel="ZStatoCla"
 							items="{
 								path: '/ZStatoClaMcSet',
-								sorter: { path: 'ZStatoCla' }
+								sorter: {
+									path: 'ZStatoCla'
+								}
 							}"
-							>
-							<core:Item  key="{ZStatoCla}" text="{
+						>
+							<core:Item
+								key="{ZStatoCla}"
+								text="{
 									path: 'ZStatoCla',
 									formatter: '.formatter.formatStatusProvision'
-								}" />
+								}"
+							/>
 						</ComboBox>
 					</items>
-					<layoutData><l:GridData	 span="XL3 L3 M6 S12" linebreak="true"/></layoutData>
-				</VBox> 
-				
-
-				<Button 
+					<layoutData>
+						<l:GridData
+							span="XL3 L3 M6 S12"
+							linebreak="true"
+						/>
+					</layoutData>
+				</VBox>
+				<Button
 					id="btnStart"
 					text="{i18n>btnStart}"
 					tooltip="{i18n>btnStart}"
 					class="button"
 					width="100%"
 					type="Emphasized"
-					press="onStart">
+					press="onStart"
+				>
 					<layoutData>
 						<l:GridData
 							linebreak="true"
@@ -320,22 +434,26 @@
 						/>
 					</layoutData>
 				</Button>
-
 			</l:Grid>
-			<FlexBox id="_idFlexBoxToggle" alignItems="Center"	justifyContent="Center">								
-				<Button 
+			<FlexBox
+				id="_idFlexBoxToggle"
+				alignItems="Center"
+				justifyContent="Center"
+			>
+				<Button
 					id="btnToggle"
 					class="button"
 					icon="sap-icon://slim-arrow-up"
 					tooltip="{i18n>tooltipArrowHide}"
 					width="100%"
 					type="Emphasized"
-					press="onToggle">
+					press="onToggle"
+				>
 					<layoutData>
-							<l:GridData 
-								span="XL1 L1 M1 S6"
-								indent="XL11 L11 M11"
-							/>
+						<l:GridData
+							span="XL1 L1 M1 S6"
+							indent="XL11 L11 M11"
+						/>
 					</layoutData>
 				</Button>
 				<Button
@@ -346,7 +464,7 @@
 					type="Emphasized"
 					press="onBlockToggle"
 				/>
-			</FlexBox>			
-		 </items>
+			</FlexBox>
+		</items>
 	</VBox>
-</core:FragmentDefinition> 
+</core:FragmentDefinition>

@@ -254,9 +254,26 @@ sap.ui.define(
           });
         },
         onExport: function (oEvent) {
+          var oSheet;
           var self = this;
-          self._getEntityProvision(true);
-          setTimeout(self._configExport(), 3000);
+          var oBundle = self.getResourceBundle();
+
+          var oTable = self.getView().byId(TABLE_PROVISIONS);
+          var oTableModel = oTable.getModel("Provision");
+
+          var aCols = self._createColumnConfig();
+          var oSettings = {
+            workbook: {
+              columns: aCols,
+            },
+            dataSource: oTableModel.getData(),
+            fileName: oBundle.getText("fileName"),
+          };
+
+          oSheet = new Spreadsheet(oSettings);
+          oSheet.build().finally(function () {
+            oSheet.destroy();
+          });
         },
 
         _setEntityProperties: function () {
@@ -355,27 +372,6 @@ sap.ui.define(
             });
         },
 
-        _configExport: function () {
-          var oSheet;
-          var self = this;
-          var oBundle = self.getResourceBundle();
-          var oTable = self.getView().byId(TABLE_PROVISIONS);
-          var oTableModel = oTable.getModel(PROVISION_EXPORT_MODEL);
-
-          var aCols = this._createColumnConfig();
-          var oSettings = {
-            workbook: {
-              columns: aCols,
-            },
-            dataSource: oTableModel.getData(),
-            fileName: oBundle.getText("fileName"),
-          };
-
-          oSheet = new Spreadsheet(oSettings);
-          oSheet.build().finally(function () {
-            oSheet.destroy();
-          });
-        },
         _createColumnConfig: function () {
           var self = this;
           var sColLabel = "tableNameColumn";
@@ -430,7 +426,7 @@ sap.ui.define(
             },
             {
               label: oBundle.getText(sColLabel + "Ktext"),
-              property: "Ktext",
+              property: "ZoggSpesIm",
               type: EDM_TYPE.String,
             },
             {

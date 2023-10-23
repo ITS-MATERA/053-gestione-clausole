@@ -147,8 +147,9 @@ sap.ui.define(
                   var bACTV_2 = self.isIncluded(aResults, "ACTV_2", "Z02");
                   var bACTV_4 = self.isIncluded(aResults, "ACTV_4", "Z04");
                   var bACTV_5 = self.isIncluded(aResults, "ACTV_5", "Z05");
-
+                  console.log(sFikrs);//TODO:Da canc
                   var check = {
+                    Fikrs: sFikrs,
                     Change: bACTV_2,
                     Active: bACTV_4,
                     Assign: bACTV_5,

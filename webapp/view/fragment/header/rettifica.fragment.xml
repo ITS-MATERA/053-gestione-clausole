@@ -42,7 +42,7 @@
 				<VBox >
 					<items>
 						<Text   text="{i18n>detailsNameFipexENG}" />
-                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaENGRettifica" anno="{Provision>/Gjahr}" eos="S" fikrs="S001" 
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaENGRettifica" anno="{Provision>/Gjahr}" eos="S" fikrs="{ActivityCheck>/Fikrs}" 
                             fase="GEST" reale="R" versione="D" fipex="{Provision>/FipexEng}" datbis="99991231" 
                             text="{Provision>/FipexEng}" semanticObject="ESAMINAMODIFICA"/>
                         <!-- <Text  class="" text="TODO" />		 				  -->
@@ -53,7 +53,7 @@
 					<items>
 						<Text   text="{i18n>detailsNameFistlENG}" />
 						<zcontrollinkSar:LinkSar id="linkSarBilancioENGRettifica" anno="{Provision>/Gjahr}" 
-							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
+							eos="E" fikrs="{ActivityCheck>/Fikrs}" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
 							bilancio="" fictr="{Provision>/FistlEng}" datbis="99991231" text="{Provision>/FistlEng}" />
 					</items>
 					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>

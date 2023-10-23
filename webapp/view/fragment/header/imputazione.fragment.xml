@@ -42,7 +42,7 @@
 				<VBox >
 					<items>
 						<Text   text="{i18n>detailsNameFipexEVG}" />
-                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaEVGImputazione" anno="{Provision>/Gjahr}" eos="S" fikrs="S001" 
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaEVGImputazione" anno="{Provision>/Gjahr}" eos="S" fikrs="{ActivityCheck>/Fikrs}" 
                             fase="GEST" reale="R" versione="D" fipex="{Provision>/FipexEvg}" datbis="99991231" 
                             text="{Provision>/FipexEvg}" semanticObject="ESAMINAMODIFICA"/>
 					</items>
@@ -52,7 +52,7 @@
 					<items>
 						<Text   text="{i18n>detailsNameFistlEVG}" />
                         <zcontrollinkSar:LinkSar id="linkSarBilancioEVGImputazione" anno="{Provision>/Gjahr}" 
-							eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
+							eos="E" fikrs="{ActivityCheck>/Fikrs}" fase="GEST" SEM_OBJ="" reale="R" versione="D" 
 							bilancio="" fictr="{Provision>/FistlEvg}" datbis="99991231" text="{Provision>/FistlEvg}" />		 				 
 					</items>
 					<layoutData><l:GridData span="XL2 L2 M6 S12"/></layoutData>

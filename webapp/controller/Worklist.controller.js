@@ -253,24 +253,57 @@ sap.ui.define(
             AuthorityPrctr: sPrctr,
           });
         },
-        onExport: function (oEvent) {
-          var oSheet;
-          var self = this;
-          var oBundle = self.getResourceBundle();
+        // onExport_: function (oEvent) {
+        //   var oSheet;
+        //   var self = this;
+        //   var oBundle = self.getResourceBundle();
 
-          var oTable = self.getView().byId(TABLE_PROVISIONS);
-          var oTableModel = oTable.getModel("Provision");
+        //   var oTable = self.getView().byId(TABLE_PROVISIONS);
+        //   var oTableModel = oTable.getModel("Provision");
+
+        //   var aCols = self._createColumnConfig();
+        //   var oSettings = {
+        //     workbook: {
+        //       columns: aCols,
+        //     },
+        //     dataSource: oTableModel.getData(),
+        //     fileName: oBundle.getText("fileName"),
+        //   };
+
+        //   oSheet = new Spreadsheet(oSettings);
+        //   oSheet.build().finally(function () {
+        //     oSheet.destroy();
+        //   });
+        // },
+
+        onExport: function (oEvent) {
+          var self =this,
+              oSheet,
+              oBundle = self.getResourceBundle();
+          
+          var oTable = self.getView().byId(TABLE_PROVISIONS);    
+          var oRowBinding = oTable.getBinding("items");
+          var customList = oRowBinding.oList;
+
+          var data = customList.map((x) => {
+            var item = x;
+            item.ZImpIpeCl = self.formatter.convertFormattedNumber(
+              item.ZImpIpeCl
+            );
+            return item;
+          });
 
           var aCols = self._createColumnConfig();
           var oSettings = {
             workbook: {
               columns: aCols,
+              hierarchyLevel: "Level",
             },
-            dataSource: oTableModel.getData(),
+            dataSource: data,
             fileName: oBundle.getText("fileName"),
           };
 
-          oSheet = new Spreadsheet(oSettings);
+          oSheet = new sap.ui.export.Spreadsheet(oSettings);
           oSheet.build().finally(function () {
             oSheet.destroy();
           });
@@ -414,15 +447,16 @@ sap.ui.define(
             },
             {
               label: oBundle.getText(sColLabel + "Fdatk"),
-              property: "Fdatk",
-              type: EDM_TYPE.Date,
+              property: "FdatkYear",
+              type: EDM_TYPE.String,
               format: "yyyy",
               textAlign: "left",
             },
             {
               label: oBundle.getText(sColLabel + "ZImpIpeCl"),
               property: "ZImpIpeCl",
-              type: EDM_TYPE.Currency,
+              type: EDM_TYPE.String,
+              textAlign: 'end'
             },
             {
               label: oBundle.getText(sColLabel + "Ktext"),
